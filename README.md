@@ -1,7 +1,7 @@
 # Installation
 
 ```
-yarn install react-native-analytics-segment-io
+yarn add react-native-analytics-segment-io
 ```
 ```
 react-native link react-native-analytics-segment-io
