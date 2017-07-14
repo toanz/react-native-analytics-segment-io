@@ -1,47 +1,47 @@
 import { NativeModules } from 'react-native'
 
-const RNAnalyticsSegmentIO = NativeModules.RNAnalyticsSegmentIO
+const RNASegmentIO = NativeModules.RNASegmentIO
 
 export default {
   setup: function (key, options = {}) {
     if (!options.flushAt) options.flushAt = 20
 
-    RNAnalyticsSegmentIO.setup(key, options)
+    RNASegmentIO.setup(key, options)
   },
 
   identify: function (userId, traits = {}) {
-    RNAnalyticsSegmentIO.identify(userId, traits)
+    RNASegmentIO.identify(userId, traits)
   },
 
   track: function (event, properties = {}) {
-    RNAnalyticsSegmentIO.track(event, properties)
+    RNASegmentIO.track(event, properties)
   },
 
   screen: function (name, properties = {}) {
-    RNAnalyticsSegmentIO.screen(name, properties)
+    RNASegmentIO.screen(name, properties)
   },
 
   group: function (groupId, traits = {}) {
-    RNAnalyticsSegmentIO.group(groupId, traits)
+    RNASegmentIO.group(groupId, traits)
   },
 
   alias: function (newId) {
-    RNAnalyticsSegmentIO.alias(newId)
+    RNASegmentIO.alias(newId)
   },
 
   reset: function () {
-    RNAnalyticsSegmentIO.reset()
+    RNASegmentIO.reset()
   },
 
   flush: function () {
-    RNAnalyticsSegmentIO.flush()
+    RNASegmentIO.flush()
   },
 
   enable: function () {
-    RNAnalyticsSegmentIO.enable()
+    RNASegmentIO.enable()
   },
 
   disable: function () {
-    RNAnalyticsSegmentIO.disable()
+    RNASegmentIO.disable()
   }
 }

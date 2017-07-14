@@ -11,8 +11,20 @@ react-native link react-native-analytics-segment-io
 Add `Analytics` framework to your Podfile.
 
 ```
-pod 'Analytics', '~> 3.6'
+pod 'Analytics'
 ```
+
+### Device-based integration components (Optional)
+
+To add an [integration](https://segment.com/docs/sources/mobile/ios/#migrating-to-v3) with a Device-based Connection Mode, you must manually add that integration’s dependencies to the Podfile.
+
+```
+pod 'Segment-Mixpanel'
+pod 'Segment-GoogleAnalytics'
+```
+
+The wrapper will automatically register the added components in the configuration when the SDK is initialized.
+
 
 ## Android
 

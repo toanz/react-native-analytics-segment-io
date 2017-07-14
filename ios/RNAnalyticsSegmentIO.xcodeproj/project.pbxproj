@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE249F891F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE249F881F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.m */; };
-		EE249F8A1F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE249F871F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.h */; };
+		EE249F891F0BC5B200AC5C78 /* RNASegmentIO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE249F881F0BC5B200AC5C78 /* RNASegmentIO.m */; };
+		EE249F8A1F0BC5B200AC5C78 /* RNASegmentIO.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE249F871F0BC5B200AC5C78 /* RNASegmentIO.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,16 +18,17 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				EE249F8A1F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.h in CopyFiles */,
+				EE249F8A1F0BC5B200AC5C78 /* RNASegmentIO.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6CCE98E61F16689800ADBBC0 /* RNAIntegrations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNAIntegrations.h; sourceTree = "<group>"; };
 		EE249F841F0BC5B200AC5C78 /* libRNAnalyticsSegmentIO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAnalyticsSegmentIO.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE249F871F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNAnalyticsSegmentIO.h; sourceTree = "<group>"; };
-		EE249F881F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNAnalyticsSegmentIO.m; sourceTree = "<group>"; };
+		EE249F871F0BC5B200AC5C78 /* RNASegmentIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNASegmentIO.h; sourceTree = "<group>"; };
+		EE249F881F0BC5B200AC5C78 /* RNASegmentIO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNASegmentIO.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +61,9 @@
 		EE249F861F0BC5B200AC5C78 /* RNAnalyticsSegmentIO */ = {
 			isa = PBXGroup;
 			children = (
-				EE249F871F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.h */,
-				EE249F881F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.m */,
+				EE249F871F0BC5B200AC5C78 /* RNASegmentIO.h */,
+				EE249F881F0BC5B200AC5C78 /* RNASegmentIO.m */,
+				6CCE98E61F16689800ADBBC0 /* RNAIntegrations.h */,
 			);
 			path = RNAnalyticsSegmentIO;
 			sourceTree = "<group>";
@@ -123,7 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE249F891F0BC5B200AC5C78 /* RNAnalyticsSegmentIO.m in Sources */,
+				EE249F891F0BC5B200AC5C78 /* RNASegmentIO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
