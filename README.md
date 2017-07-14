@@ -14,7 +14,7 @@ Add `Analytics` framework to your Podfile.
 pod 'Analytics'
 ```
 
-### Device-based integration components (Optional)
+### Device-based integration components
 
 To add an [integration](https://segment.com/docs/sources/mobile/ios/#migrating-to-v3) with a Device-based Connection Mode, you must manually add that integration’s dependencies to the Podfile.
 
@@ -24,6 +24,23 @@ pod 'Segment-GoogleAnalytics'
 ```
 
 The wrapper will automatically register the added components in the configuration when the SDK is initialized.
+
+Supported integrations:
+
+| Component           | Podfile                             |
+|---------------------|-------------------------------------|
+| [Taplytics](https://github.com/segment-integrations/analytics-ios-integration-taplytics)           | `pod 'Segment-Taplytics'`           |
+| [Adjust](https://github.com/segment-integrations/analytics-ios-integration-adjust)              | `pod 'Segment-Adjust'`              |
+| [Google Analytics](https://github.com/segment-integrations/analytics-ios-integration-google-analytics)    | `pod 'Segment-GoogleAnalytics'`     |
+| [ComScore](https://github.com/segment-integrations/analytics-ios-integration-comscore)            | `pod 'Segment-ComScore'`            |
+| [Amplitude](https://github.com/segment-integrations/analytics-ios-integration-amplitude)           | `pod 'Segment-Amplitude'`           |
+| [Facebook App Events](https://github.com/segment-integrations/analytics-ios-integration-facebook-app-events) | `pod 'Segment-Facebook-App-Events'` |
+| [Mixpanel](https://github.com/segment-integrations/analytics-ios-integration-mixpanel)            | `pod 'Segment-Mixpanel'`            |
+| [Localytics](https://github.com/segment-integrations/analytics-ios-integration-localytics)          | `pod 'Segment-Localytics'`          |
+| [Flurry](https://github.com/segment-integrations/analytics-ios-integration-flurry)              | `pod 'Segment-Flurry'`              |
+| [Quantcast](https://github.com/segment-integrations/analytics-ios-integration-quantcast)           | `pod 'Segment-Quantcast'`           |
+| [Crittercism](https://github.com/segment-integrations/analytics-ios-integration-crittercism)         | `pod 'Segment-Crittercism'`         |
+| [Firebase](https://github.com/segment-integrations/analytics-ios-integration-firebase)            | `pod 'Segment-Firebase'`            |
 
 
 ## Android
