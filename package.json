@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/leoilab/react-native-analytics-segment-io/issues"
   },
-  "homepage": "https://github.com/leoilab/react-native-analytics-segment-io#readme"
+  "homepage": "https://github.com/leoilab/react-native-analytics-segment-io#readme",
+  "devDependencies": {
+    "react-native": "^0.47.1"
+  }
 }

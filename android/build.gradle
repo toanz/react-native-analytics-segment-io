@@ -1,0 +1,34 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.3.3'
+  }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+  compileSdkVersion 25
+  buildToolsVersion '25.0.2'
+
+  defaultConfig {
+    minSdkVersion 16
+    targetSdkVersion 22
+    versionCode 1
+    versionName '1.0'
+  }
+}
+
+repositories {
+  println(rootDir)
+  maven { url "$rootDir/../node_modules/react-native/android" }
+  mavenCentral()
+}
+
+dependencies {
+  provided 'com.facebook.react:react-native:0.47.1'
+  provided 'com.segment.analytics.android:analytics:4.2.6'
+}
