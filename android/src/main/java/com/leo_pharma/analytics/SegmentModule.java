@@ -108,14 +108,4 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     public void flush() {
         Analytics.with(getReactApplicationContext()).flush();
     }
-
-    @ReactMethod
-    public void enable() {
-        //TODO?
-    }
-
-    @ReactMethod
-    public void disable() {
-        Analytics.with(getReactApplicationContext()).shutdown(); //TODO?
-    }
 }
