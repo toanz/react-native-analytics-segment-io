@@ -48,7 +48,48 @@ Supported integrations:
 
 ## Android
 
-TODO
+Run `react-native link react-native-analytics-segment-io` to add the necessary lines to the build files. Alternatively, you can do this manually with the 2 following steps:
+
+1. Add a reference to the project in `settings.gradle`:
+```
+include ':react-native-analytics-segment-io'
+project(':react-native-analytics-segment-io').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-analytics-segment-io/android')
+```
+
+2. Add the dependency to the app's `build.gradle` file:
+```
+compile project(':react-native-analytics-segment-io')
+```
+
+When the build files are set up to include the library, add a dependency to the Segment SDK in the app's `build.gradle` file:
+```
+compile 'com.segment.analytics.android:analytics:x.x.x' // We have tested with version 4.2.6
+```
+
+Then sync Gradle, and add the analytics package to your `Application` class:
+```
+@Override
+protected List<ReactPackage> getPackages() {
+  return Arrays.<ReactPackage>asList(
+      new MainReactPackage(),
+      new AnalyticsPackage()
+  );
+}
+```
+
+Your project is now ready to start calling functions on react-native-analytics-segment-io.
+
+### enable() and disable()
+
+The `enable()` and `disable()` methods are not available in the Segment SDK for Android, so they are not included in the Android version of this library.
+
+### Why you need to add the Segment SDK manually
+
+The Segment SDK is added to the library as a `provided` dependency, meaning that it is not included in the final build. That is why it is necessary to include the Segment SDK in the app's `build.gradle` file. This makes it easy to update the Segment SDK from the app, and it makes the app's build configuration the source of truth when it comes to Segment.
+
+### Minimum React Native version
+
+It is required to use React Native v0.46.4 or higher. This is because we use a feature in Java on the passed maps (`.toHashMap()`) that is introduced in that version.
 
 # Usage
 

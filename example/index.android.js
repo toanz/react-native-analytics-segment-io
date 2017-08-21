@@ -11,8 +11,14 @@ import {
   Text,
   View
 } from 'react-native';
+import Analytics from 'react-native-analytics-segment-io';
 
 export default class example extends Component {
+  componentDidMount() {
+    Analytics.setup('add-segment-key-here', { enableAdvertisingTracking: true });
+    Analytics.track('test', {});
+  }
+
   render() {
     return (
       <View style={styles.container}>

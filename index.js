@@ -1,6 +1,6 @@
 import { NativeModules } from 'react-native'
 
-const RNASegmentIO = NativeModules.RNASegmentIO
+const RNASegmentIO = NativeModules.RNASegmentIO || NativeModules.SegmentModule
 
 export default {
   setup: function (key, options = {}) {
