@@ -29,6 +29,6 @@ repositories {
 }
 
 dependencies {
-  provided 'com.facebook.react:react-native:0.47.1'
+  provided 'com.facebook.react:react-native:+'
   provided 'com.segment.analytics.android:analytics:4.2.6'
 }
