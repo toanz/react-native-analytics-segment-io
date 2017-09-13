@@ -50,10 +50,6 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             analyticsBuilder.trackAttributionInformation();
         }
 
-        if (BuildConfig.DEBUG) {
-            analyticsBuilder.logLevel(Analytics.LogLevel.VERBOSE);
-        }
-
         Analytics.setSingletonInstance(analyticsBuilder.build());
     }
 
