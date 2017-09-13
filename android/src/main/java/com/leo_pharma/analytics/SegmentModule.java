@@ -16,6 +16,8 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     private static final String PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS = "trackApplicationLifecycleEvents";
     private static final String PROPERTY_TRACK_ATTRIBUTION_DATA = "trackAttributionData";
 
+    private Analytics analytics;
+
     public SegmentModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
@@ -30,7 +32,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         Analytics.Builder analyticsBuilder = new Analytics.Builder(getReactApplicationContext(), key);
 
         if (options == null) {
-            Analytics.setSingletonInstance(analyticsBuilder.build());
+            analytics = analyticsBuilder.build();
             return;
         }
 
@@ -50,7 +52,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             analyticsBuilder.trackAttributionInformation();
         }
 
-        Analytics.setSingletonInstance(analyticsBuilder.build());
+        analytics = analyticsBuilder.build();
     }
 
     @ReactMethod
@@ -61,7 +63,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             traits.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).identify(userId, traits, null);
+        analytics.identify(userId, traits, null);
     }
 
     @ReactMethod
@@ -72,7 +74,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             segmentProperties.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).track(event, segmentProperties);
+        analytics.track(event, segmentProperties);
     }
 
     @ReactMethod
@@ -83,7 +85,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             segmentProperties.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).screen("", name, segmentProperties);
+        analytics.screen("", name, segmentProperties);
     }
 
     @ReactMethod
@@ -94,21 +96,21 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             traits.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).group(groupId, traits, null);
+        analytics.group(groupId, traits, null);
     }
 
     @ReactMethod
-        Analytics.with(getReactApplicationContext()).alias(newId);
     public void alias(@Nullable String newId) {
+        analytics.alias(newId);
     }
 
     @ReactMethod
     public void reset() {
-        Analytics.with(getReactApplicationContext()).reset();
+        analytics.reset();
     }
 
     @ReactMethod
     public void flush() {
-        Analytics.with(getReactApplicationContext()).flush();
+        analytics.flush();
     }
 }
