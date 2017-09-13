@@ -1,5 +1,7 @@
 package com.leo_pharma.analytics;
 
+import android.support.annotation.Nullable;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -24,7 +26,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setup(String key, ReadableMap options) {
+    public void setup(@Nullable String key, @Nullable ReadableMap options) {
         Analytics.Builder analyticsBuilder = new Analytics.Builder(getReactApplicationContext(), key);
 
         if (options == null) {
@@ -56,7 +58,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void identify(String userId, ReadableMap properties) {
+    public void identify(@Nullable String userId, @Nullable ReadableMap properties) {
         Traits traits = new Traits();
 
         if (properties != null) {
@@ -67,7 +69,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void track(String event, ReadableMap properties) {
+    public void track(@Nullable String event, @Nullable ReadableMap properties) {
         Properties segmentProperties = new Properties();
 
         if (properties != null) {
@@ -78,7 +80,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void screen(String name, ReadableMap properties) {
+    public void screen(@Nullable String name, @Nullable ReadableMap properties) {
         Properties segmentProperties = new Properties();
 
         if (properties != null) {
@@ -89,7 +91,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void group(String groupId, ReadableMap properties) {
+    public void group(@Nullable String groupId, @Nullable ReadableMap properties) {
         Traits traits = new Traits();
 
         if (properties != null) {
@@ -100,8 +102,8 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void alias(String newId) {
         Analytics.with(getReactApplicationContext()).alias(newId);
+    public void alias(@Nullable String newId) {
     }
 
     @ReactMethod
