@@ -9,6 +9,11 @@ import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
 
 public class SegmentModule extends ReactContextBaseJavaModule {
+    private static final String PROPERTY_FLUSH_AT = "flushAt";
+    private static final String PROPERTY_RECORD_SCREEN_VIEWS = "recordScreenViews";
+    private static final String PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS = "trackApplicationLifecycleEvents";
+    private static final String PROPERTY_TRACK_ATTRIBUTION_DATA = "trackAttributionData";
+
     public SegmentModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
@@ -27,19 +32,19 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             return;
         }
 
-        if (options.hasKey("flushAt")) {
-            analyticsBuilder.flushQueueSize(options.getInt("flushAt"));
+        if (options.hasKey(PROPERTY_FLUSH_AT)) {
+            analyticsBuilder.flushQueueSize(options.getInt(PROPERTY_FLUSH_AT));
         }
 
-        if (options.hasKey("recordScreenViews") && options.getBoolean("recordScreenViews")) {
+        if (options.hasKey(PROPERTY_RECORD_SCREEN_VIEWS) && options.getBoolean(PROPERTY_RECORD_SCREEN_VIEWS)) {
             analyticsBuilder.recordScreenViews();
         }
 
-        if (options.hasKey("trackApplicationLifecycleEvents") && options.getBoolean("trackApplicationLifecycleEvents")) {
+        if (options.hasKey(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS) && options.getBoolean(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)) {
             analyticsBuilder.trackApplicationLifecycleEvents();
         }
 
-        if (options.hasKey("trackAttributionData") && options.getBoolean("trackAttributionData")) {
+        if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA) && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
             analyticsBuilder.trackAttributionInformation();
         }
 
