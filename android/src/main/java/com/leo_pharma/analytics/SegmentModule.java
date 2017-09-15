@@ -1,5 +1,7 @@
 package com.leo_pharma.analytics;
 
+import android.support.annotation.Nullable;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -9,6 +11,13 @@ import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
 
 public class SegmentModule extends ReactContextBaseJavaModule {
+    private static final String PROPERTY_FLUSH_AT = "flushAt";
+    private static final String PROPERTY_RECORD_SCREEN_VIEWS = "recordScreenViews";
+    private static final String PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS = "trackApplicationLifecycleEvents";
+    private static final String PROPERTY_TRACK_ATTRIBUTION_DATA = "trackAttributionData";
+
+    private Analytics analytics;
+
     public SegmentModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
@@ -19,93 +28,89 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setup(String key, ReadableMap options) {
+    public void setup(@Nullable String key, @Nullable ReadableMap options) {
         Analytics.Builder analyticsBuilder = new Analytics.Builder(getReactApplicationContext(), key);
 
         if (options == null) {
-            Analytics.setSingletonInstance(analyticsBuilder.build());
+            analytics = analyticsBuilder.build();
             return;
         }
 
-        if (options.hasKey("flushAt")) {
-            analyticsBuilder.flushQueueSize(options.getInt("flushAt"));
+        if (options.hasKey(PROPERTY_FLUSH_AT)) {
+            analyticsBuilder.flushQueueSize(options.getInt(PROPERTY_FLUSH_AT));
         }
 
-        if (options.hasKey("recordScreenViews") && options.getBoolean("recordScreenViews")) {
+        if (options.hasKey(PROPERTY_RECORD_SCREEN_VIEWS) && options.getBoolean(PROPERTY_RECORD_SCREEN_VIEWS)) {
             analyticsBuilder.recordScreenViews();
         }
 
-        if (options.hasKey("trackApplicationLifecycleEvents") && options.getBoolean("trackApplicationLifecycleEvents")) {
+        if (options.hasKey(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS) && options.getBoolean(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)) {
             analyticsBuilder.trackApplicationLifecycleEvents();
         }
 
-        if (options.hasKey("trackAttributionData") && options.getBoolean("trackAttributionData")) {
+        if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA) && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
             analyticsBuilder.trackAttributionInformation();
         }
 
-        if (BuildConfig.DEBUG) {
-            analyticsBuilder.logLevel(Analytics.LogLevel.VERBOSE);
-        }
-
-        Analytics.setSingletonInstance(analyticsBuilder.build());
+        analytics = analyticsBuilder.build();
     }
 
     @ReactMethod
-    public void identify(String userId, ReadableMap properties) {
+    public void identify(@Nullable String userId, @Nullable ReadableMap properties) {
         Traits traits = new Traits();
 
         if (properties != null) {
             traits.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).identify(userId, traits, null);
+        analytics.identify(userId, traits, null);
     }
 
     @ReactMethod
-    public void track(String event, ReadableMap properties) {
+    public void track(@Nullable String event, @Nullable ReadableMap properties) {
         Properties segmentProperties = new Properties();
 
         if (properties != null) {
             segmentProperties.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).track(event, segmentProperties);
+        analytics.track(event, segmentProperties);
     }
 
     @ReactMethod
-    public void screen(String name, ReadableMap properties) {
+    public void screen(@Nullable String name, @Nullable ReadableMap properties) {
         Properties segmentProperties = new Properties();
 
         if (properties != null) {
             segmentProperties.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).screen("", name, segmentProperties);
+        analytics.screen("", name, segmentProperties);
     }
 
     @ReactMethod
-    public void group(String groupId, ReadableMap properties) {
+    public void group(@Nullable String groupId, @Nullable ReadableMap properties) {
         Traits traits = new Traits();
 
         if (properties != null) {
             traits.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).group(groupId, traits, null);
+        analytics.group(groupId, traits, null);
     }
 
     @ReactMethod
-    public void alias(String newId) {
-        Analytics.with(getReactApplicationContext()).alias(newId);
+    public void alias(@Nullable String newId) {
+        analytics.alias(newId);
     }
 
     @ReactMethod
     public void reset() {
-        Analytics.with(getReactApplicationContext()).reset();
+        analytics.reset();
     }
 
     @ReactMethod
     public void flush() {
-        Analytics.with(getReactApplicationContext()).flush();
+        analytics.flush();
     }
 }

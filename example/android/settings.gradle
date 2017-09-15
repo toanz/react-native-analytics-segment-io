@@ -3,4 +3,4 @@ rootProject.name = 'example'
 include ':app'
 
 include ':react-native-analytics-segment-io'
-project(':react-native-analytics-segment-io').projectDir = new File(rootProject.projectDir, '../android')
+project(':react-native-analytics-segment-io').projectDir = new File(rootProject.projectDir, '../../android')
