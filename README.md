@@ -1,6 +1,8 @@
 [![npm](https://img.shields.io/npm/v/react-native-analytics-segment-io.svg)](https://www.npmjs.com/package/react-native-analytics-segment-io)
 [![travis](https://img.shields.io/travis/leoilab/react-native-analytics-segment-io/master.svg)](https://travis-ci.org/leoilab/react-native-analytics-segment-io)
 
+# A React Native wrapper for Segment Analytics
+
 # Installation
 
 ```
