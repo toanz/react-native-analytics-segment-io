@@ -6,7 +6,7 @@ export default {
   setup: function (key, options = {}) {
     if (!options.flushAt) options.flushAt = 20
 
-    RNASegmentIO.setup(key, options)
+    return RNASegmentIO.setup(key, options)
   },
 
   identify: function (userId, traits = {}) {

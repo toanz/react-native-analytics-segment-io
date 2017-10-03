@@ -2,6 +2,7 @@ package com.leo_pharma.analytics;
 
 import android.support.annotation.Nullable;
 
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -16,8 +17,6 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     private static final String PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS = "trackApplicationLifecycleEvents";
     private static final String PROPERTY_TRACK_ATTRIBUTION_DATA = "trackAttributionData";
 
-    private Analytics analytics;
-
     public SegmentModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
@@ -28,31 +27,34 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setup(@Nullable String key, @Nullable ReadableMap options) {
+    public void setup(@Nullable String key, @Nullable ReadableMap options, Promise promise) {
         Analytics.Builder analyticsBuilder = new Analytics.Builder(getReactApplicationContext(), key);
 
-        if (options == null) {
-            analytics = analyticsBuilder.build();
-            return;
+        if (options != null) {
+            if (options.hasKey(PROPERTY_FLUSH_AT)) {
+                analyticsBuilder.flushQueueSize(options.getInt(PROPERTY_FLUSH_AT));
+            }
+
+            if (options.hasKey(PROPERTY_RECORD_SCREEN_VIEWS) && options.getBoolean(PROPERTY_RECORD_SCREEN_VIEWS)) {
+                analyticsBuilder.recordScreenViews();
+            }
+
+            if (options.hasKey(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS) && options.getBoolean(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)) {
+                analyticsBuilder.trackApplicationLifecycleEvents();
+            }
+
+            if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA) && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
+                analyticsBuilder.trackAttributionInformation();
+            }
         }
 
-        if (options.hasKey(PROPERTY_FLUSH_AT)) {
-            analyticsBuilder.flushQueueSize(options.getInt(PROPERTY_FLUSH_AT));
+        try {
+            Analytics.setSingletonInstance(analyticsBuilder.build());
+            promise.resolve(true);
         }
-
-        if (options.hasKey(PROPERTY_RECORD_SCREEN_VIEWS) && options.getBoolean(PROPERTY_RECORD_SCREEN_VIEWS)) {
-            analyticsBuilder.recordScreenViews();
+        catch (IllegalStateException e) {
+            promise.reject("IllegalStateException", "Analytics is already set up, cannot perform setup twice.");
         }
-
-        if (options.hasKey(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS) && options.getBoolean(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)) {
-            analyticsBuilder.trackApplicationLifecycleEvents();
-        }
-
-        if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA) && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
-            analyticsBuilder.trackAttributionInformation();
-        }
-
-        analytics = analyticsBuilder.build();
     }
 
     @ReactMethod
@@ -63,7 +65,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             traits.putAll(properties.toHashMap());
         }
 
-        analytics.identify(userId, traits, null);
+        Analytics.with(getReactApplicationContext()).identify(userId, traits, null);
     }
 
     @ReactMethod
@@ -74,7 +76,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             segmentProperties.putAll(properties.toHashMap());
         }
 
-        analytics.track(event, segmentProperties);
+        Analytics.with(getReactApplicationContext()).track(event, segmentProperties);
     }
 
     @ReactMethod
@@ -85,7 +87,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             segmentProperties.putAll(properties.toHashMap());
         }
 
-        analytics.screen("", name, segmentProperties);
+        Analytics.with(getReactApplicationContext()).screen("", name, segmentProperties);
     }
 
     @ReactMethod
@@ -96,21 +98,21 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             traits.putAll(properties.toHashMap());
         }
 
-        analytics.group(groupId, traits, null);
+        Analytics.with(getReactApplicationContext()).group(groupId, traits, null);
     }
 
     @ReactMethod
     public void alias(@Nullable String newId) {
-        analytics.alias(newId);
+        Analytics.with(getReactApplicationContext()).alias(newId);
     }
 
     @ReactMethod
     public void reset() {
-        analytics.reset();
+        Analytics.with(getReactApplicationContext()).reset();
     }
 
     @ReactMethod
     public void flush() {
-        analytics.flush();
+        Analytics.with(getReactApplicationContext()).flush();
     }
 }
