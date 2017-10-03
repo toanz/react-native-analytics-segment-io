@@ -10,6 +10,20 @@ import com.facebook.react.bridge.ReadableMap;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
+import com.segment.analytics.android.integrations.adjust.AdjustIntegration;
+import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
+import com.segment.analytics.android.integrations.appsflyer.AppsflyerIntegration;
+import com.segment.analytics.android.integrations.bugsnag.BugsnagIntegration;
+import com.segment.analytics.android.integrations.comscore.ComScoreIntegration;
+import com.segment.analytics.android.integrations.countly.CountlyIntegration;
+import com.segment.analytics.android.integrations.crittercism.CrittercismIntegration;
+import com.segment.analytics.android.integrations.firebase.FirebaseIntegration;
+import com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration;
+import com.segment.analytics.android.integrations.localytics.LocalyticsIntegration;
+import com.segment.analytics.android.integrations.mixpanel.MixpanelIntegration;
+import com.segment.analytics.android.integrations.nielsendcr.NielsenDCRIntegration;
+import com.segment.analytics.android.integrations.quantcast.QuantcastIntegration;
+import com.segment.analytics.android.integrations.tapstream.TapstreamIntegration;
 
 public class SegmentModule extends ReactContextBaseJavaModule {
     private static final String PROPERTY_FLUSH_AT = "flushAt";
@@ -48,12 +62,93 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             }
         }
 
+        setupIntegrations(analyticsBuilder);
+
         try {
             Analytics.setSingletonInstance(analyticsBuilder.build());
             promise.resolve(true);
         }
         catch (IllegalStateException e) {
             promise.reject("IllegalStateException", "Analytics is already set up, cannot perform setup twice.");
+        }
+    }
+
+    /**
+     * Sets up integrations from https://github.com/segment-integrations plus AppsFlyer, if their SDK is present
+     *
+     * @param analyticsBuilder
+     */
+    private void setupIntegrations(Analytics.Builder analyticsBuilder) {
+        if (isClassAvailable("com.segment.analytics.android.integrations.adjust.AdjustIntegration")) {
+            analyticsBuilder.use(AdjustIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration")) {
+            analyticsBuilder.use(AmplitudeIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.appsflyer.AppsflyerIntegration")) {
+            analyticsBuilder.use(AppsflyerIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.bugsnag.BugsnagIntegration")) {
+            analyticsBuilder.use(BugsnagIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.comscore.ComScoreIntegration")) {
+            analyticsBuilder.use(ComScoreIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.countly.CountlyIntegration")) {
+            analyticsBuilder.use(CountlyIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.crittercism.CrittercismIntegration")) {
+            analyticsBuilder.use(CrittercismIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.firebase.FirebaseIntegration")) {
+            analyticsBuilder.use(FirebaseIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration")) {
+            analyticsBuilder.use(GoogleAnalyticsIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.localytics.LocalyticsIntegration")) {
+            analyticsBuilder.use(LocalyticsIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.mixpanel.MixpanelIntegration")) {
+            analyticsBuilder.use(MixpanelIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.nielsendcr.NielsenDCRIntegration")) {
+            analyticsBuilder.use(NielsenDCRIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.quantcast.QuantcastIntegration")) {
+            analyticsBuilder.use(QuantcastIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.tapstream.TapstreamIntegration")) {
+            analyticsBuilder.use(TapstreamIntegration.FACTORY);
+        }
+    }
+
+    /**
+     * Checks if a certain class is available.
+     *
+     * @param className Including the full package name
+     * @return True if the class is available. False if it cannot be found.
+     */
+    private boolean isClassAvailable(String className) {
+        try {
+            Class.forName(className);
+            return true;
+        }
+        catch (ClassNotFoundException e) {
+            return false;
         }
     }
 
