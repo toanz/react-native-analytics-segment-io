@@ -10,18 +10,19 @@ import Analytics from 'react-native-analytics-segment-io';
 export default class example extends Component {
   componentDidMount() {
     Analytics.setup('add-segment-key-here', { enableAdvertisingTracking: true })
-    Analytics.track('test', {})
+      .then(() => {
+        Analytics.track('test', {})
+      })
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native Analytics Segment IO
+          {`React Native Analytics Segment IO`}
         </Text>
         <Text style={styles.instructions}>
-          Looks like everything went well. No huge errors at least.
-          You might want to check the console to be sure.
+          {`Remember to add your own segment key, before running this example.`}
         </Text>
       </View>
     )
@@ -43,6 +44,6 @@ const styles = StyleSheet.create({
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    margin: 10,
   },
 })

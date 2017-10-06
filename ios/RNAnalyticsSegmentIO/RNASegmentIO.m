@@ -14,7 +14,10 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(setup:(NSString *)key :(NSDictionary *)options)
+RCT_EXPORT_METHOD(setup:(NSString *)key
+                  options:(NSDictionary *)options
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
 {
     SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:key];
     config.enableAdvertisingTracking = [RCTConvert BOOL:options[@"enableAdvertisingTracking"]];
@@ -25,56 +28,57 @@ RCT_EXPORT_METHOD(setup:(NSString *)key :(NSDictionary *)options)
     config.trackApplicationLifecycleEvents = [RCTConvert BOOL:options[@"trackApplicationLifecycleEvents"]];
     config.trackAttributionData = [RCTConvert BOOL:options[@"trackAttributionData"]];
     config.trackDeepLinks = [RCTConvert BOOL:options[@"trackDeepLinks"]];
-    
+
 #ifdef SEGTaplyticsIntegrationFactoryImported
     [config use:[SEGTaplyticsIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGAdjustIntegrationFactoryImported
     [config use:[SEGAdjustIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGGoogleAnalyticsIntegrationFactoryImported
     [config use:[SEGGoogleAnalyticsIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGComScoreIntegrationFactoryImported
     [config use:[SEGComScoreIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGAmplitudeIntegrationFactoryImported
     [config use:[SEGAmplitudeIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGFacebookAppEventsIntegrationFactoryImported
     [config use:[SEGFacebookAppEventsIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGMixpanelIntegrationFactoryImported
     [config use:[SEGMixpanelIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGLocalyticsIntegrationFactoryImported
     [config use:[SEGLocalyticsIntegrationFactory instance]];
-#endif 
-    
+#endif
+
 #ifdef SEGFlurryIntegrationFactoryImported
     [config use:[SEGFlurryIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGQuantcastIntegrationFactoryImported
     [config use:[SEGQuantcastIntegrationFactory instance]];
 #endif
-    
+
 #ifdef SEGCrittercismIntegrationFactoryImported
     [config use:[SEGCrittercismIntegrationFactory instance]];
-#endif 
-    
+#endif
+
 #ifdef SEGFirebaseIntegrationFactoryImported
     [config use:[SEGFirebaseIntegrationFactory instance]];
 #endif
-    
+
     [SEGAnalytics setupWithConfiguration:config];
+    resolve(@(YES));
 }
 
 RCT_EXPORT_METHOD(identify:(NSString *)userId :(NSDictionary *)traits)
