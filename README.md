@@ -148,7 +148,7 @@ import Analytics from 'react-native-analytics-segment-io'
 Analytics.setup('segment_write_key', { enableAdvertisingTracking: true })
 ```
 
-*On Android, `setup()` returns a promise to indicate whether the initialization was successful or not.*
+*`setup()` returns a promise to indicate whether the initialization was successful or not.*
 
 Supported options:
 
