@@ -1,6 +1,8 @@
 [![npm](https://img.shields.io/npm/v/react-native-analytics-segment-io.svg)](https://www.npmjs.com/package/react-native-analytics-segment-io)
 [![travis](https://img.shields.io/travis/leoilab/react-native-analytics-segment-io/master.svg)](https://travis-ci.org/leoilab/react-native-analytics-segment-io)
 
+# A React Native wrapper for Segment Analytics
+
 # Installation
 
 ```
@@ -91,6 +93,38 @@ The Segment SDK is added to the library as a `provided` dependency, meaning that
 
 It is required to use React Native v0.46.4 or higher. This is because we use a feature in Java on the passed maps (`.toHashMap()`) that is introduced in that version.
 
+### Device-based integration components
+
+To add an [integration](https://segment.com/docs/sources/mobile/android/#migrating-to-v4) with a Device-based destination, you have to manually add that integration as a dependency to the app's `build.gradle` file.
+
+For example:
+
+```
+compile 'com.segment.analytics.android.integrations:firebase:1.1.0'
+compile 'com.segment.analytics.android.integrations:mixpanel:1.1.0'
+```
+
+The wrapper will automatically register the added components in the configuration when the SDK is present.
+
+Supported integrations:
+
+| Component           | Dependency           |
+|---------------------|----------------------|
+| [AppsFlyer](https://github.com/AppsFlyerSDK/AppsFlyer-Segment-Integration) | `com.appsflyer:segment-android-integration:1.9` |
+| [Adjust](https://github.com/segment-integrations/analytics-android-integration-adjust) | `com.segment.analytics.android.integrations:adjust:0.3.1` |
+| [Amplitude](https://github.com/segment-integrations/analytics-android-integration-amplitude) | `com.segment.analytics.android.integrations:amplitude:1.2.1` |
+| [Bugsnag](https://github.com/segment-integrations/analytics-android-integration-bugsnag) | `com.segment.analytics.android.integrations:bugsnag:1.0.0` |
+| [ComScore](https://github.com/segment-integrations/analytics-android-integration-comscore) | `com.segment.analytics.android.integrations:comscore:3.0.0` |
+| [Countly](https://github.com/segment-integrations/analytics-android-integration-countly) | `com.segment.analytics.android.integrations:countly:1.0.0` |
+| [Crittercism](https://github.com/segment-integrations/analytics-android-integration-crittercism) | `com.segment.analytics.android.integrations:crittercism:1.0.0` |
+| [Firebase](https://github.com/segment-integrations/analytics-android-integration-firebase) | `com.segment.analytics.android.integrations:firebase:1.1.0` |
+| [Google Analytics](https://github.com/segment-integrations/analytics-android-integration-google-analytics) | `com.segment.analytics.android.integrations:google-analytics:2.0.0` |
+| [Localytics](https://github.com/segment-integrations/analytics-android-integration-localytics) | `com.segment.analytics.android.integrations:Localytics` |
+| [Mixpanel](https://github.com/segment-integrations/analytics-android-integration-mixpanel) | `com.segment.analytics.android.integrations:mixpanel:1.1.0` |
+| [NielsenDCR](https://github.com/segment-integrations/analytics-android-integration-nielsendcr) | `com.segment.analytics.android.integrations:nielsendcr:1.0.0-Beta` |
+| [Quantcast](https://github.com/segment-integrations/analytics-android-integration-quantcast) | `com.segment.analytics.android.integrations:quantcast:1.0.1` |
+| [Tapstream](https://github.com/segment-integrations/analytics-android-integration-tapstream) | `com.segment.analytics.android.integrations:tapstream:1.0.0` |
+
 # Usage
 
 ```js
@@ -113,6 +147,8 @@ import Analytics from 'react-native-analytics-segment-io'
 ```js
 Analytics.setup('segment_write_key', { enableAdvertisingTracking: true })
 ```
+
+*`setup()` returns a promise to indicate whether the initialization was successful or not.*
 
 Supported options:
 

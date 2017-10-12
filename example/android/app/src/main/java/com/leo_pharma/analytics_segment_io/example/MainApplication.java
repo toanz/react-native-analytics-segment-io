@@ -1,4 +1,4 @@
-package com.example;
+package com.leo_pharma.analytics_segment_io.example;
 
 import android.app.Application;
 
