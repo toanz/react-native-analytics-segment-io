@@ -77,6 +77,10 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
     [config use:[SEGFirebaseIntegrationFactory instance]];
 #endif
 
+#ifdef SEGAppsFlyerIntegrationFactoryImported
+    [config use:[SEGAppsFlyerIntegrationFactory instance]];
+#endif
+
     [SEGAnalytics setupWithConfiguration:config];
     resolve(@(YES));
 }
