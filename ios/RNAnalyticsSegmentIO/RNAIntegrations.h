@@ -64,3 +64,8 @@
 #import <Segment-Firebase/SEGFirebaseIntegrationFactory.h>
 #define SEGFirebaseIntegrationFactoryImported
 #endif
+
+#if __has_include("SEGAppsFlyerIntegrationFactory.h")
+#import <segment-appsflyer-ios/SEGAppsFlyerIntegrationFactory.h>
+#define SEGAppsFlyerIntegrationFactoryImported
+#endif
