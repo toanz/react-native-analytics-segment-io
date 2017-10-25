@@ -81,6 +81,10 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
     [config use:[SEGAppsFlyerIntegrationFactory instance]];
 #endif
 
+#ifdef BNCBranchIntegrationFactoryImported
+    [config use:[BNCBranchIntegrationFactory instance]];
+#endif
+
     [SEGAnalytics setupWithConfiguration:config];
     resolve(@(YES));
 }
