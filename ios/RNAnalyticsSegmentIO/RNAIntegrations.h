@@ -69,3 +69,8 @@
 #import <segment-appsflyer-ios/SEGAppsFlyerIntegrationFactory.h>
 #define SEGAppsFlyerIntegrationFactoryImported
 #endif
+
+#if __has_include("BNCBranchIntegrationFactory.h")
+#import <Segment-Branch/BNCBranchIntegrationFactory.h>
+#define BNCBranchIntegrationFactoryImported
+#endif

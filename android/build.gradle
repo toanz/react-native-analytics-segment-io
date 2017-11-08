@@ -50,4 +50,5 @@ dependencies {
   provided 'com.segment.analytics.android.integrations:nielsendcr:1.0.0-Beta'
   provided 'com.segment.analytics.android.integrations:quantcast:1.0.1'
   provided 'com.segment.analytics.android.integrations:tapstream:1.0.0'
+  provided 'io.branch.segment.analytics.android.integrations:branch:1.0.2-RELEASE'
 }

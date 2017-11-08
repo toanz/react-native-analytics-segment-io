@@ -24,6 +24,7 @@ import com.segment.analytics.android.integrations.mixpanel.MixpanelIntegration;
 import com.segment.analytics.android.integrations.nielsendcr.NielsenDCRIntegration;
 import com.segment.analytics.android.integrations.quantcast.QuantcastIntegration;
 import com.segment.analytics.android.integrations.tapstream.TapstreamIntegration;
+import com.segment.analytics.android.integrations.branch.BranchIntegration;
 
 public class SegmentModule extends ReactContextBaseJavaModule {
     private static final String PROPERTY_FLUSH_AT = "flushAt";
@@ -53,11 +54,13 @@ public class SegmentModule extends ReactContextBaseJavaModule {
                 analyticsBuilder.recordScreenViews();
             }
 
-            if (options.hasKey(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS) && options.getBoolean(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)) {
+            if (options.hasKey(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)
+                    && options.getBoolean(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)) {
                 analyticsBuilder.trackApplicationLifecycleEvents();
             }
 
-            if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA) && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
+            if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA)
+                    && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
                 analyticsBuilder.trackAttributionInformation();
             }
         }
@@ -67,8 +70,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         try {
             Analytics.setSingletonInstance(analyticsBuilder.build());
             promise.resolve(true);
-        }
-        catch (IllegalStateException e) {
+        } catch (IllegalStateException e) {
             promise.reject("IllegalStateException", "Analytics is already set up, cannot perform setup twice.");
         }
     }
@@ -111,7 +113,8 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             analyticsBuilder.use(FirebaseIntegration.FACTORY);
         }
 
-        if (isClassAvailable("com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration")) {
+        if (isClassAvailable(
+                "com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration")) {
             analyticsBuilder.use(GoogleAnalyticsIntegration.FACTORY);
         }
 
@@ -134,6 +137,11 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         if (isClassAvailable("com.segment.analytics.android.integrations.tapstream.TapstreamIntegration")) {
             analyticsBuilder.use(TapstreamIntegration.FACTORY);
         }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.branch.BranchIntegration")) {
+            analyticsBuilder.use(BranchIntegration.FACTORY);
+        }
+
     }
 
     /**
@@ -146,8 +154,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         try {
             Class.forName(className);
             return true;
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             return false;
         }
     }
