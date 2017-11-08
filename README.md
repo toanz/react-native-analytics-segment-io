@@ -3,6 +3,13 @@
 
 # A React Native wrapper for Segment Analytics
 
+- [Installation](https://github.com/leoilab/react-native-analytics-segment-io#installation)
+  * [iOS](https://github.com/leoilab/react-native-analytics-segment-io#ios)
+  * [Android](https://github.com/leoilab/react-native-analytics-segment-io#android)
+- [Usage](https://github.com/leoilab/react-native-analytics-segment-io#usage)
+- [License](https://github.com/leoilab/react-native-analytics-segment-io#license)
+
+
 # Installation
 
 ```
