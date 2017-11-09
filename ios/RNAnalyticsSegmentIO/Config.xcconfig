@@ -1,0 +1,8 @@
+//
+//  Config.xcconfig
+//  RNAnalyticsSegmentIO
+//
+//  Copyright © 2017 LEO Pharma A/S. All rights reserved.
+//
+
+HEADER_SEARCH_PATHS = $(inherited) ${SRCROOT}/../../../ios/Pods/Headers/Public/**
