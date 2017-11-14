@@ -5,8 +5,22 @@
 //  Copyright © 2017 LEO Pharma A/S. All rights reserved.
 //
 
+#if __has_include(<Analytics/SEGAnalytics.h>)
 #import <Analytics/SEGAnalytics.h>
+#elif __has_include("SEGAnalytics.h")
+#import "SEGAnalytics.h"
+#else
+#import "Analytics/SEGAnalytics.h"
+#endif
+
+#if __has_include(<React/RCTConvert.h>)
 #import <React/RCTConvert.h>
+#elif __has_include("RCTConvert.h")
+#import "RCTConvert.h"
+#else
+#import "React/RCTConvert.h"
+#endif
+
 #import "RNASegmentIO.h"
 #import "RNAIntegrations.h"
 
