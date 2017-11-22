@@ -100,6 +100,7 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
 #endif
 
     [SEGAnalytics setupWithConfiguration:config];
+    [SEGAnalytics debug:[RCTConvert BOOL:options[@"debug"]]];
     resolve(@(YES));
 }
 

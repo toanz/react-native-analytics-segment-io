@@ -172,6 +172,7 @@ Supported options:
 | trackApplicationLifecycleEvents | Bool    | `false` | Whether the analytics client should automatically make a track call for application lifecycle events, such as "Application Installed", "Application Updated" and "Application Opened". |
 | trackAttributionData            | Bool    | `false` | Whether the analytics client should automatically track attribution data from enabled providers using the mobile service.                                                              |
 | trackDeepLinks                  | Bool    | `false` | Whether the analytics client should automatically track deep links.                                                                                                                    |
+| debug                           | Bool    | `false` | Whether the analytics client should log everything to the console (only enable this during development).                                                                               |
 
 ## identify: function (userId, traits = {})
 *Tie a user to their actions and record traits about them*
