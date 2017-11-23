@@ -34,14 +34,46 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
                   reject:(RCTPromiseRejectBlock)reject)
 {
     SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:key];
-    config.enableAdvertisingTracking = [RCTConvert BOOL:options[@"enableAdvertisingTracking"]];
-    config.flushAt = [RCTConvert NSUInteger:options[@"flushAt"]];
-    config.recordScreenViews = [RCTConvert BOOL:options[@"recordScreenViews"]];
-    config.shouldUseBluetooth = [RCTConvert BOOL:options[@"shouldUseBluetooth"]];
-    config.shouldUseLocationServices = [RCTConvert BOOL:options[@"shouldUseLocationServices"]];
-    config.trackApplicationLifecycleEvents = [RCTConvert BOOL:options[@"trackApplicationLifecycleEvents"]];
-    config.trackAttributionData = [RCTConvert BOOL:options[@"trackAttributionData"]];
-    config.trackDeepLinks = [RCTConvert BOOL:options[@"trackDeepLinks"]];
+
+    id value = options[@"enableAdvertisingTracking"];
+    if (value != nil) {
+        config.enableAdvertisingTracking = [RCTConvert BOOL:value];
+    }
+
+    value = options[@"flushAt"];
+    if (value != nil) {
+        config.flushAt = [RCTConvert NSUInteger:value];
+    }
+
+    value = options[@"recordScreenViews"];
+    if (value != nil) {
+        config.recordScreenViews = [RCTConvert BOOL:value];
+    }
+
+    value = options[@"shouldUseBluetooth"];
+    if (value != nil) {
+        config.shouldUseBluetooth = [RCTConvert BOOL:value];
+    }
+
+    value = options[@"shouldUseLocationServices"];
+    if (value != nil) {
+        config.shouldUseLocationServices = [RCTConvert BOOL:value];
+    }
+
+    value = options[@"trackApplicationLifecycleEvents"];
+    if (value != nil) {
+        config.trackApplicationLifecycleEvents = [RCTConvert BOOL:value];
+    }
+
+    value = options[@"trackAttributionData"];
+    if (value != nil) {
+        config.trackAttributionData = [RCTConvert BOOL:value];
+    }
+
+    value = options[@"trackDeepLinks"];
+    if (value != nil) {
+        config.trackDeepLinks = [RCTConvert BOOL:value];
+    }
 
 #ifdef SEGTaplyticsIntegrationFactoryImported
     [config use:[SEGTaplyticsIntegrationFactory instance]];

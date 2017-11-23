@@ -164,7 +164,7 @@ Supported options:
 
 | Options                         | Type    | Default | Description                                                                                                                                                                            |
 |---------------------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| enableAdvertisingTracking       | Bool    | `false` | Whether the analytics client should track advertisting info.                                                                                                                           |
+| enableAdvertisingTracking       | Bool    | `true` | Whether the analytics client should track advertisting info.                                                                                                                           |
 | flushAt                         | Integer | `20`    | The number of queued events that the analytics client should flush at. Setting this to `1` will not queue any events and will use more battery.                                        |
 | recordScreenViews               | Bool    | `false` | Whether the analytics client should automatically make a screen call when a view controller is added to a view hierarchy.                                                              |
 | shouldUseBluetooth              | Bool    | `false` | Whether the analytics client should record bluetooth information.                                                                                                                      |
