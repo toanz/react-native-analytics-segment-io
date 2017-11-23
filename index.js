@@ -45,3 +45,16 @@ export default {
     RNASegmentIO.disable()
   }
 }
+
+RNASegmentIO.constants = {
+  options: {
+    enableAdvertisingTracking: RNASegmentIO.enableAdvertisingTracking,
+    flushAt: RNASegmentIO.flushAt,
+    recordScreenViews: RNASegmentIO.recordScreenViews,
+    shouldUseBluetooth: RNASegmentIO.shouldUseBluetooth,
+    shouldUseLocationServices: RNASegmentIO.shouldUseLocationServices,
+    trackApplicationLifecycleEvents: RNASegmentIO.trackApplicationLifecycleEvents,
+    trackAttributionData: RNASegmentIO.trackAttributionData,
+    trackDeepLinks: RNASegmentIO.trackDeepLinks
+  }
+}

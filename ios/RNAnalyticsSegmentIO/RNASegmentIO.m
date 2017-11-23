@@ -24,6 +24,15 @@
 #import "RNASegmentIO.h"
 #import "RNAIntegrations.h"
 
+static NSString * const kSEGEnableAdvertisingTrackingKey = @"enableAdvertisingTracking";
+static NSString * const kSEGFlushAtKey = @"flushAt";
+static NSString * const kSEGRecordScreenViewsKey = @"recordScreenViews";
+static NSString * const kSEGShouldUseBluetoothKey = @"shouldUseBluetooth";
+static NSString * const kSEGShouldUseLocationServicesKey = @"shouldUseLocationServices";
+static NSString * const kSEGTrackApplicationLifecycleEventsKey = @"trackApplicationLifecycleEvents";
+static NSString * const kSEGTrackAttributionDataKey = @"trackAttributionData";
+static NSString * const kSEGTrackDeepLinksKey = @"trackDeepLinks";
+
 @implementation RNASegmentIO
 
 RCT_EXPORT_MODULE()
@@ -35,42 +44,42 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
 {
     SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:key];
 
-    id value = options[@"enableAdvertisingTracking"];
+    id value = options[kSEGEnableAdvertisingTrackingKey];
     if (value != nil) {
         config.enableAdvertisingTracking = [RCTConvert BOOL:value];
     }
 
-    value = options[@"flushAt"];
+    value = options[kSEGFlushAtKey];
     if (value != nil) {
         config.flushAt = [RCTConvert NSUInteger:value];
     }
 
-    value = options[@"recordScreenViews"];
+    value = options[kSEGRecordScreenViewsKey];
     if (value != nil) {
         config.recordScreenViews = [RCTConvert BOOL:value];
     }
 
-    value = options[@"shouldUseBluetooth"];
+    value = options[kSEGShouldUseBluetoothKey];
     if (value != nil) {
         config.shouldUseBluetooth = [RCTConvert BOOL:value];
     }
 
-    value = options[@"shouldUseLocationServices"];
+    value = options[kSEGShouldUseLocationServicesKey];
     if (value != nil) {
         config.shouldUseLocationServices = [RCTConvert BOOL:value];
     }
 
-    value = options[@"trackApplicationLifecycleEvents"];
+    value = options[kSEGTrackApplicationLifecycleEventsKey];
     if (value != nil) {
         config.trackApplicationLifecycleEvents = [RCTConvert BOOL:value];
     }
 
-    value = options[@"trackAttributionData"];
+    value = options[kSEGTrackAttributionDataKey];
     if (value != nil) {
         config.trackAttributionData = [RCTConvert BOOL:value];
     }
 
-    value = options[@"trackDeepLinks"];
+    value = options[kSEGTrackDeepLinksKey];
     if (value != nil) {
         config.trackDeepLinks = [RCTConvert BOOL:value];
     }
@@ -178,6 +187,19 @@ RCT_EXPORT_METHOD(enable)
 RCT_EXPORT_METHOD(disable)
 {
     [[SEGAnalytics sharedAnalytics] disable];
+}
+
+- (NSDictionary<NSString *, id> *)constantsToExport {
+    return @{
+        kSEGEnableAdvertisingTrackingKey: kSEGEnableAdvertisingTrackingKey,
+        kSEGFlushAtKey: kSEGFlushAtKey,
+        kSEGRecordScreenViewsKey: kSEGRecordScreenViewsKey,
+        kSEGShouldUseBluetoothKey: kSEGShouldUseBluetoothKey,
+        kSEGShouldUseLocationServicesKey: kSEGShouldUseLocationServicesKey,
+        kSEGTrackApplicationLifecycleEventsKey: kSEGTrackApplicationLifecycleEventsKey,
+        kSEGTrackAttributionDataKey: kSEGTrackAttributionDataKey,
+        kSEGTrackDeepLinksKey: kSEGTrackDeepLinksKey
+    };
 }
 
 @end
