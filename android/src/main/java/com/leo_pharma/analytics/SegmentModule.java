@@ -26,6 +26,9 @@ import com.segment.analytics.android.integrations.quantcast.QuantcastIntegration
 import com.segment.analytics.android.integrations.tapstream.TapstreamIntegration;
 import com.segment.analytics.android.integrations.branch.BranchIntegration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SegmentModule extends ReactContextBaseJavaModule {
     private static final String PROPERTY_FLUSH_AT = "flushAt";
     private static final String PROPERTY_RECORD_SCREEN_VIEWS = "recordScreenViews";
@@ -216,5 +219,16 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void flush() {
         Analytics.with(getReactApplicationContext()).flush();
+    }
+
+    @Nullable
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> constants = new HashMap<>();
+        constants.put(PROPERTY_FLUSH_AT, PROPERTY_FLUSH_AT);
+        constants.put(PROPERTY_RECORD_SCREEN_VIEWS, PROPERTY_RECORD_SCREEN_VIEWS);
+        constants.put(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS, PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS);
+        constants.put(PROPERTY_TRACK_ATTRIBUTION_DATA, PROPERTY_TRACK_ATTRIBUTION_DATA);
+        return constants;
     }
 }
