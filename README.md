@@ -138,7 +138,7 @@ Supported integrations:
 # Usage
 
 ```js
-import Analytics from 'react-native-analytics-segment-io'
+import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io'
 ```
 
 - **Analytics.setup(key, options)**
@@ -155,7 +155,7 @@ import Analytics from 'react-native-analytics-segment-io'
 ## setup: function (key, options = {})
 *Initial framework setup*
 ```js
-Analytics.setup('segment_write_key', { Analytics.constants.options.enableAdvertisingTracking: true })
+Analytics.setup('segment_write_key', { [AnalyticsConstants.enableAdvertisingTracking]: true })
 ```
 
 *`setup()` returns a promise to indicate whether the initialization was successful or not.*
