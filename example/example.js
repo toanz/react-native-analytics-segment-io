@@ -5,11 +5,11 @@ import {
   Text,
   View
 } from 'react-native';
-import Analytics from 'react-native-analytics-segment-io';
+import Analytics, { Constants } from 'react-native-analytics-segment-io';
 
 export default class example extends Component {
   componentDidMount() {
-    Analytics.setup('add-segment-key-here', { enableAdvertisingTracking: true })
+    Analytics.setup('add-segment-key-here', { [Constants.enableAdvertisingTracking]: true })
       .then(() => {
         Analytics.track('test', {})
       })
