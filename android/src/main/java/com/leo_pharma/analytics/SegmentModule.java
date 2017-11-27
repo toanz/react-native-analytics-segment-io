@@ -235,6 +235,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         constants.put(PROPERTY_RECORD_SCREEN_VIEWS, PROPERTY_RECORD_SCREEN_VIEWS);
         constants.put(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS, PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS);
         constants.put(PROPERTY_TRACK_ATTRIBUTION_DATA, PROPERTY_TRACK_ATTRIBUTION_DATA);
+        constants.put(PROPERTY_DEBUG, PROPERTY_DEBUG);
         return constants;
     }
 }

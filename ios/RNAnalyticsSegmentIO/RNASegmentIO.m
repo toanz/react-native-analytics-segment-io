@@ -32,6 +32,7 @@ static NSString * const kSEGShouldUseLocationServicesKey = @"shouldUseLocationSe
 static NSString * const kSEGTrackApplicationLifecycleEventsKey = @"trackApplicationLifecycleEvents";
 static NSString * const kSEGTrackAttributionDataKey = @"trackAttributionData";
 static NSString * const kSEGTrackDeepLinksKey = @"trackDeepLinks";
+static NSString * const kSEGDebugKey = @"debug";
 
 @implementation RNASegmentIO
 
@@ -142,7 +143,7 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
 
     [SEGAnalytics setupWithConfiguration:config];
 
-    value = options[@"debug"];
+    value = options[kSEGDebugKey];
     if (value != nil) {
         [SEGAnalytics debug:[RCTConvert BOOL:value]];
     }
@@ -204,7 +205,8 @@ RCT_EXPORT_METHOD(disable)
         kSEGShouldUseLocationServicesKey: kSEGShouldUseLocationServicesKey,
         kSEGTrackApplicationLifecycleEventsKey: kSEGTrackApplicationLifecycleEventsKey,
         kSEGTrackAttributionDataKey: kSEGTrackAttributionDataKey,
-        kSEGTrackDeepLinksKey: kSEGTrackDeepLinksKey
+        kSEGTrackDeepLinksKey: kSEGTrackDeepLinksKey,
+        kSEGDebugKey: kSEGDebugKey,
     };
 }
 
