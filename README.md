@@ -164,7 +164,7 @@ Supported options:
 
 | Options                         | Type    | Default | iOS | Android | Description                                                                                                                                                                            |
 |---------------------------------|---------|---------|-----|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| enableAdvertisingTracking       | Bool    | `true` | ✔   | ✘       | Whether the analytics client should track advertising info.                                                                                                                           |
+| enableAdvertisingTracking       | Bool    | `true`  | ✔   | ✘       | Whether the analytics client should track advertising info.                                                                                                                           |
 | flushAt                         | Integer | `20`    | ✔   | ✔       | The number of queued events that the analytics client should flush at. Setting this to `1` will not queue any events and will use more battery.                                        |
 | recordScreenViews               | Bool    | `false` | ✔   | ✔       | Whether the analytics client should automatically make a screen call when a view controller is added to a view hierarchy.                                                              |
 | shouldUseBluetooth              | Bool    | `false` | ✔   | ✘       | Whether the analytics client should record bluetooth information.                                                                                                                      |
@@ -172,6 +172,7 @@ Supported options:
 | trackApplicationLifecycleEvents | Bool    | `false` | ✔   | ✔       | Whether the analytics client should automatically make a track call for application lifecycle events, such as "Application Installed", "Application Updated" and "Application Opened". |
 | trackAttributionData            | Bool    | `false` | ✔   | ✔       | Whether the analytics client should automatically track attribution data from enabled providers using the mobile service.                                                              |
 | trackDeepLinks                  | Bool    | `false` | ✔   | ✘       | Whether the analytics client should automatically track deep links.                                                                                                                    |
+| debug                           | Bool    | `false` | ✔   | ✔       | Whether the analytics client should log everything to the console (only enable this during development).                                                                               |
 
 ## identify: function (userId, traits = {})
 *Tie a user to their actions and record traits about them*
