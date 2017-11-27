@@ -52,5 +52,6 @@ export const AnalyticsConstants = {
   shouldUseLocationServices: RNASegmentIO.shouldUseLocationServices,
   trackApplicationLifecycleEvents: RNASegmentIO.trackApplicationLifecycleEvents,
   trackAttributionData: RNASegmentIO.trackAttributionData,
-  trackDeepLinks: RNASegmentIO.trackDeepLinks
+  trackDeepLinks: RNASegmentIO.trackDeepLinks,
+  debug: RNASegmentIO.debug,
 }
