@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View
@@ -9,7 +8,7 @@ import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io
 
 export default class example extends Component {
   componentDidMount() {
-    Analytics.setup('add-segment-key-here', { [AnalyticsConstants.enableAdvertisingTracking]: true })
+    Analytics.setup('add-segment-key-here', { enableAdvertisingTracking: true, debug: true })
       .then(() => {
         Analytics.track('test', {})
       })

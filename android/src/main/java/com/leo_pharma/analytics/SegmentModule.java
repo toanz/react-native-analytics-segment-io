@@ -34,6 +34,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     private static final String PROPERTY_RECORD_SCREEN_VIEWS = "recordScreenViews";
     private static final String PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS = "trackApplicationLifecycleEvents";
     private static final String PROPERTY_TRACK_ATTRIBUTION_DATA = "trackAttributionData";
+    private static final String PROPERTY_DEBUG = "debug";
 
     public SegmentModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -65,6 +66,13 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA)
                     && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
                 analyticsBuilder.trackAttributionInformation();
+            }
+
+            if (options.hasKey(PROPERTY_DEBUG) && options.getBoolean(PROPERTY_DEBUG)) {
+                analyticsBuilder.logLevel(Analytics.LogLevel.VERBOSE);
+            }
+            else {
+                analyticsBuilder.logLevel(Analytics.LogLevel.NONE);
             }
         }
 
@@ -116,8 +124,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             analyticsBuilder.use(FirebaseIntegration.FACTORY);
         }
 
-        if (isClassAvailable(
-                "com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration")) {
+        if (isClassAvailable("com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration")) {
             analyticsBuilder.use(GoogleAnalyticsIntegration.FACTORY);
         }
 
@@ -144,7 +151,6 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         if (isClassAvailable("com.segment.analytics.android.integrations.branch.BranchIntegration")) {
             analyticsBuilder.use(BranchIntegration.FACTORY);
         }
-
     }
 
     /**
