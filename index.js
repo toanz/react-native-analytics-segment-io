@@ -4,8 +4,6 @@ const RNASegmentIO = NativeModules.RNASegmentIO || NativeModules.SegmentModule
 
 export default {
   setup: function (key, options = {}) {
-    if (!options.flushAt) options.flushAt = 20
-
     return RNASegmentIO.setup(key, options)
   },
 
@@ -44,4 +42,15 @@ export default {
   disable: function () {
     RNASegmentIO.disable()
   }
+}
+
+export const AnalyticsConstants = {
+  enableAdvertisingTracking: RNASegmentIO.enableAdvertisingTracking,
+  flushAt: RNASegmentIO.flushAt,
+  recordScreenViews: RNASegmentIO.recordScreenViews,
+  shouldUseBluetooth: RNASegmentIO.shouldUseBluetooth,
+  shouldUseLocationServices: RNASegmentIO.shouldUseLocationServices,
+  trackApplicationLifecycleEvents: RNASegmentIO.trackApplicationLifecycleEvents,
+  trackAttributionData: RNASegmentIO.trackAttributionData,
+  trackDeepLinks: RNASegmentIO.trackDeepLinks
 }
