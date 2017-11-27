@@ -7,6 +7,7 @@
   * [iOS](https://github.com/leoilab/react-native-analytics-segment-io#ios)
   * [Android](https://github.com/leoilab/react-native-analytics-segment-io#android)
 - [Usage](https://github.com/leoilab/react-native-analytics-segment-io#usage)
+- [Example](https://github.com/leoilab/react-native-analytics-segment-io#example)
 - [License](https://github.com/leoilab/react-native-analytics-segment-io#license)
 
 
@@ -234,6 +235,28 @@ Futher [explanation](https://segment.com/docs/sources/mobile/ios/#opt-out) can b
 Analytics.disable()
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#opt-out) can be found on Segments own page.
+
+# Example
+To run the iOS example:
+```
+git clone git@github.com:leoilab/react-native-analytics-segment-io.git
+cd react-native-analytics-segment-io
+cd example
+npm install
+cd ios
+pod install
+cd ..
+react-native run-ios
+```
+
+To run the Android example:
+```
+git clone git@github.com:leoilab/react-native-analytics-segment-io.git
+cd react-native-analytics-segment-io
+cd example
+npm install
+react-native run-android
+```
 
 # License
 
