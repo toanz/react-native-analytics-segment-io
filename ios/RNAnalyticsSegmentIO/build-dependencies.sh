@@ -17,7 +17,7 @@ segment_schemes=$(xcodebuild -workspace ${main_workspace} -list | sed '1,/Scheme
 for pod in ${segment_pods}; do
     if [[ ${segment_schemes[*]} =~ ${pod} ]]; then
         echo "Compile '${pod}'"
-        xcodebuild -workspace ${main_workspace} -scheme ${pod} -arch ${CURRENT_ARCH} -sdk ${SDK_NAME} -configuration ${CONFIGURATION} ONLY_ACTIVE_ARCH=NO
+        xcodebuild ONLY_ACTIVE_ARCH=NO -workspace ${main_workspace} -scheme ${pod} -arch ${CURRENT_ARCH} -sdk ${SDK_NAME} -configuration ${CONFIGURATION} -derivedDataPath ${MAIN_BUILD_DIR}
     else
         echo "Copy headers '${pod}'"
         mkdir -p ${SEGMENT_HEADERS_PATH}
