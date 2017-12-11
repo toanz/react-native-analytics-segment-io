@@ -56,6 +56,7 @@ Supported integrations:
 | [Firebase](https://github.com/segment-integrations/analytics-ios-integration-firebase)            | `pod 'Segment-Firebase'`            |
 | [AppsFlyer](https://github.com/AppsFlyerSDK/segment-appsflyer-ios)            | `pod 'segment-appsflyer-ios'`            |
 | [Branch](https://github.com/BranchMetrics/Segment-Branch-iOS)            | `pod 'Segment-Branch'`            |
+| [Braze (formerly AppBoy)](https://github.com/Appboy/appboy-segment-ios)            | `pod 'Segment-Appboy'`            |
 
 
 ## Android
@@ -120,6 +121,7 @@ Supported integrations:
 
 | Component           | Dependency           |
 |---------------------|----------------------|
+| [Braze (formerly AppBoy)](https://github.com/Appboy/appboy-segment-android) | `com.appboy:appboy-segment-integration:2.1.0` |
 | [AppsFlyer](https://github.com/AppsFlyerSDK/AppsFlyer-Segment-Integration) | `com.appsflyer:segment-android-integration:1.9` |
 | [Adjust](https://github.com/segment-integrations/analytics-android-integration-adjust) | `com.segment.analytics.android.integrations:adjust:0.3.1` |
 | [Amplitude](https://github.com/segment-integrations/analytics-android-integration-amplitude) | `com.segment.analytics.android.integrations:amplitude:1.2.1` |

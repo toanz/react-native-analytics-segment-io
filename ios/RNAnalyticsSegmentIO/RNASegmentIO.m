@@ -141,6 +141,10 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
     [config use:[BNCBranchIntegrationFactory instance]];
 #endif
 
+#ifdef SEGAppboyIntegrationFactoryImported
+    [config use:[SEGAppboyIntegrationFactory instance]];
+#endif
+
     [SEGAnalytics setupWithConfiguration:config];
 
     value = options[kSEGDebugKey];

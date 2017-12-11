@@ -162,3 +162,14 @@
 #import "BNCBranchIntegrationFactory.h"
 #define BNCBranchIntegrationFactoryImported
 #endif
+
+#if __has_include(<Segment-Appboy/SEGAppboyIntegrationFactory.h>)
+#import <Segment-Appboy/SEGAppboyIntegrationFactory.h>
+#define SEGAppboyIntegrationFactoryImported
+#elif __has_include(<Segment_Appboy/SEGAppboyIntegrationFactory.h>)
+#import <Segment_Appboy/SEGAppboyIntegrationFactory.h>
+#define SEGAppboyIntegrationFactoryImported
+#elif __has_include("SEGAppboyIntegrationFactory.h")
+#import "SEGAppboyIntegrationFactory.h"
+#define SEGAppboyIntegrationFactoryImported
+#endif
