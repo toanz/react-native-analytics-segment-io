@@ -12,6 +12,7 @@ import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
 import com.segment.analytics.android.integrations.adjust.AdjustIntegration;
 import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
+import com.segment.analytics.android.integrations.appboy.AppboyIntegration;
 import com.segment.analytics.android.integrations.appsflyer.AppsflyerIntegration;
 import com.segment.analytics.android.integrations.bugsnag.BugsnagIntegration;
 import com.segment.analytics.android.integrations.comscore.ComScoreIntegration;
@@ -98,6 +99,10 @@ public class SegmentModule extends ReactContextBaseJavaModule {
 
         if (isClassAvailable("com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration")) {
             analyticsBuilder.use(AmplitudeIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.appboy.AppboyIntegration")) {
+            analyticsBuilder.use(AppboyIntegration.FACTORY);
         }
 
         if (isClassAvailable("com.segment.analytics.android.integrations.appsflyer.AppsflyerIntegration")) {

@@ -36,6 +36,7 @@ dependencies {
   provided 'com.facebook.react:react-native:+'
   provided 'com.segment.analytics.android:analytics:4.2.6'
 
+  provided 'com.appboy:appboy-segment-integration:2.1.0'
   provided 'com.appsflyer:segment-android-integration:1.9'
   provided 'com.segment.analytics.android.integrations:adjust:0.3.1'
   provided 'com.segment.analytics.android.integrations:amplitude:1.2.1'

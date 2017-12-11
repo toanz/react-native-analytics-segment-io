@@ -10,7 +10,7 @@
 main_workspace=$(find ${MAIN_SRCROOT} -name "*.xcworkspace")
 
 # Get the list of folders and schemes in Pods project with name matching one of the Segment's supported integration
-segment_regex="(^analytics$)|segment|taplytics|adjust|googleanalytics|googleidfa|comscore|amplitude|fbsdk|mixpanel|localytics|flurry|quantcast|crittercism|firebase|appsflyer|branch"
+segment_regex="(^analytics$)|segment|taplytics|adjust|googleanalytics|googleidfa|comscore|amplitude|fbsdk|mixpanel|localytics|flurry|quantcast|crittercism|firebase|appsflyer|branch|appboy"
 segment_pods=$(ls ${MAIN_PODS_ROOT} | grep -iE ${segment_regex} | sed "s,/$,,")
 segment_schemes=$(xcodebuild -workspace ${main_workspace} -list | sed '1,/Schemes:/ d' | sed 's/^ *//; /^$/d' | grep -iE ${segment_regex})
 
