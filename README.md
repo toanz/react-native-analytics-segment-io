@@ -56,7 +56,7 @@ Supported integrations:
 | [Firebase](https://github.com/segment-integrations/analytics-ios-integration-firebase)            | `pod 'Segment-Firebase'`            |
 | [AppsFlyer](https://github.com/AppsFlyerSDK/segment-appsflyer-ios)            | `pod 'segment-appsflyer-ios'`            |
 | [Branch](https://github.com/BranchMetrics/Segment-Branch-iOS)            | `pod 'Segment-Branch'`            |
-| [Braze (formerly AppBoy)](https://github.com/Appboy/appboy-segment-ios)            | `pod 'Segment-Appboy'`            |
+| [Braze (formerly Appboy)](https://github.com/Appboy/appboy-segment-ios)            | `pod 'Segment-Appboy'`            |
 
 
 ## Android
@@ -64,23 +64,23 @@ Supported integrations:
 Run `react-native link react-native-analytics-segment-io` to add the necessary lines to the build files. Alternatively, you can do this manually with the 2 following steps:
 
 1. Add a reference to the project in `settings.gradle`:
-```
+```gradle
 include ':react-native-analytics-segment-io'
 project(':react-native-analytics-segment-io').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-analytics-segment-io/android')
 ```
 
 2. Add the dependency to the app's `build.gradle` file:
-```
+```gradle
 compile project(':react-native-analytics-segment-io')
 ```
 
 When the build files are set up to include the library, add a dependency to the Segment SDK in the app's `build.gradle` file:
-```
+```gradle
 compile 'com.segment.analytics.android:analytics:x.x.x' // We have tested with version 4.2.6
 ```
 
 Then sync Gradle, and add the analytics package to your `Application` class:
-```
+```java
 @Override
 protected List<ReactPackage> getPackages() {
   return Arrays.<ReactPackage>asList(
@@ -110,7 +110,7 @@ To add an [integration](https://segment.com/docs/sources/mobile/android/#migrati
 
 For example:
 
-```
+```gradle
 compile 'com.segment.analytics.android.integrations:firebase:1.1.0'
 compile 'com.segment.analytics.android.integrations:mixpanel:1.1.0'
 ```
@@ -121,7 +121,7 @@ Supported integrations:
 
 | Component           | Dependency           |
 |---------------------|----------------------|
-| [Braze (formerly AppBoy)](https://github.com/Appboy/appboy-segment-android) | `com.appboy:appboy-segment-integration:2.1.0` |
+| [Braze (formerly Appboy)](https://github.com/Appboy/appboy-segment-android) | `com.appboy:appboy-segment-integration:2.1.0` |
 | [AppsFlyer](https://github.com/AppsFlyerSDK/AppsFlyer-Segment-Integration) | `com.appsflyer:segment-android-integration:1.9` |
 | [Adjust](https://github.com/segment-integrations/analytics-android-integration-adjust) | `com.segment.analytics.android.integrations:adjust:0.3.1` |
 | [Amplitude](https://github.com/segment-integrations/analytics-android-integration-amplitude) | `com.segment.analytics.android.integrations:amplitude:1.2.1` |
@@ -137,6 +137,22 @@ Supported integrations:
 | [Quantcast](https://github.com/segment-integrations/analytics-android-integration-quantcast) | `com.segment.analytics.android.integrations:quantcast:1.0.1` |
 | [Tapstream](https://github.com/segment-integrations/analytics-android-integration-tapstream) | `com.segment.analytics.android.integrations:tapstream:1.0.0` |
 | [Branch](https://github.com/BranchMetrics/Segment-Branch-Android) | `io.branch.segment.analytics.android.integrations:branch:1.0.2-RELEASE` |
+
+### Extra repositories
+
+Some integrations require you to add an extra Maven repository to your app's `build.gradle` file.
+These are all of those dependencies with their repository:
+
+```gradle
+repositories {
+  ...
+  maven { url "http://appboy.github.io/appboy-android-sdk/sdk" } // Required for Braze (formerly Appboy)
+  maven { url 'https://comscore.bintray.com/Analytics' } // Required for Comscore
+  maven { url 'http://dl.bintray.com/countly/maven' } // Required for Countly
+  maven { url 'https://maven.google.com' } // Required for Firebase
+  maven { url 'http://maven.localytics.com/public' } // Required for Localytics
+}
+```
 
 # Usage
 
