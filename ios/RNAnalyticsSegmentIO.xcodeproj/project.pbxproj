@@ -26,7 +26,6 @@
 
 /* Begin PBXFileReference section */
 		6CCE98E61F16689800ADBBC0 /* RNAIntegrations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNAIntegrations.h; sourceTree = "<group>"; };
-		E4B95E171FB5E5CD0067597C /* build-dependencies.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-dependencies.sh"; sourceTree = "<group>"; };
 		E4F7D57B1FB494080005B9C2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		EE249F841F0BC5B200AC5C78 /* libRNAnalyticsSegmentIO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAnalyticsSegmentIO.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE249F871F0BC5B200AC5C78 /* RNASegmentIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNASegmentIO.h; sourceTree = "<group>"; };
@@ -67,7 +66,6 @@
 				EE249F881F0BC5B200AC5C78 /* RNASegmentIO.m */,
 				6CCE98E61F16689800ADBBC0 /* RNAIntegrations.h */,
 				E4F7D57B1FB494080005B9C2 /* Config.xcconfig */,
-				E4B95E171FB5E5CD0067597C /* build-dependencies.sh */,
 			);
 			path = RNAnalyticsSegmentIO;
 			sourceTree = "<group>";
@@ -79,7 +77,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE249F8D1F0BC5B200AC5C78 /* Build configuration list for PBXNativeTarget "RNAnalyticsSegmentIO" */;
 			buildPhases = (
-				E4B95E181FB6D4B60067597C /* Build Dependencies */,
 				EE249F801F0BC5B200AC5C78 /* Sources */,
 				EE249F811F0BC5B200AC5C78 /* Frameworks */,
 				EE249F821F0BC5B200AC5C78 /* CopyFiles */,
@@ -124,24 +121,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		E4B95E181FB6D4B60067597C /* Build Dependencies */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Dependencies";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./$TARGETNAME/build-dependencies.sh";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EE249F801F0BC5B200AC5C78 /* Sources */ = {
