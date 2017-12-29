@@ -260,7 +260,7 @@ To run the iOS example:
 git clone git@github.com:leoilab/react-native-analytics-segment-io.git
 cd react-native-analytics-segment-io
 cd example
-npm install
+yarn install
 cd ios
 pod install
 cd ..
@@ -272,7 +272,7 @@ To run the Android example:
 git clone git@github.com:leoilab/react-native-analytics-segment-io.git
 cd react-native-analytics-segment-io
 cd example
-npm install
+yarn install
 react-native run-android
 ```
 
