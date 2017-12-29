@@ -10,7 +10,7 @@
 	"dependencies": {
 		"react": "16.0.0",
 		"react-native": "0.51.0",
-		"react-native-analytics-segment-io": "file:../"
+		"react-native-analytics-segment-io": "file:.."
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",
