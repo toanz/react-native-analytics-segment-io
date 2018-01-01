@@ -97,7 +97,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "Rise Digital";
+				ORGANIZATIONNAME = "LEO Pharma A/S";
 				TargetAttributes = {
 					EE249F831F0BC5B200AC5C78 = {
 						CreatedOnToolsVersion = 8.3.3;
