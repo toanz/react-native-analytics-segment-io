@@ -240,7 +240,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4F7D57B1FB494080005B9C2 /* Config.xcconfig */;
 			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -250,7 +253,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4F7D57B1FB494080005B9C2 /* Config.xcconfig */;
 			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
