@@ -3392,7 +3392,7 @@ react-devtools-core@^2.5.0:
     ws "^2.0.3"
 
 "react-native-analytics-segment-io@file:..":
-  version "3.0.2"
+  version "3.0.3"
 
 react-native@0.51.0:
   version "0.51.0"
