@@ -121,7 +121,7 @@ Supported integrations:
 
 | Component           | Dependency           |
 |---------------------|----------------------|
-| [Braze (formerly Appboy)](https://github.com/Appboy/appboy-segment-android) | `com.appboy:appboy-segment-integration:2.1.0` |
+| [Braze (formerly Appboy)](https://github.com/Appboy/appboy-segment-android) | `com.appboy:appboy-segment-integration:2.1.1` |
 | [AppsFlyer](https://github.com/AppsFlyerSDK/AppsFlyer-Segment-Integration) | `com.appsflyer:segment-android-integration:1.9` |
 | [Adjust](https://github.com/segment-integrations/analytics-android-integration-adjust) | `com.segment.analytics.android.integrations:adjust:0.3.1` |
 | [Amplitude](https://github.com/segment-integrations/analytics-android-integration-amplitude) | `com.segment.analytics.android.integrations:amplitude:1.2.1` |
