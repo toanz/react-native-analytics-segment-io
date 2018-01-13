@@ -57,7 +57,7 @@ Supported integrations:
 | [AppsFlyer](https://github.com/AppsFlyerSDK/segment-appsflyer-ios)            | `pod 'segment-appsflyer-ios'`            |
 | [Branch](https://github.com/BranchMetrics/Segment-Branch-iOS)            | `pod 'Segment-Branch'`            |
 | [Braze (formerly Appboy)](https://github.com/Appboy/appboy-segment-ios)            | `pod 'Segment-Appboy'`            |
-
+| [Intercom](https://github.com/segment-integrations/analytics-ios-integration-intercom) | `pod 'Segment-Intercom'` |
 
 ## Android
 
@@ -131,6 +131,7 @@ Supported integrations:
 | [Crittercism](https://github.com/segment-integrations/analytics-android-integration-crittercism) | `com.segment.analytics.android.integrations:crittercism:1.0.0` |
 | [Firebase](https://github.com/segment-integrations/analytics-android-integration-firebase) | `com.segment.analytics.android.integrations:firebase:1.1.0` |
 | [Google Analytics](https://github.com/segment-integrations/analytics-android-integration-google-analytics) | `com.segment.analytics.android.integrations:google-analytics:2.0.0` |
+| [Intercom](https://github.com/segment-integrations/analytics-android-integration-intercom) | `com.segment.analytics.android.integrations:intercom:1.1.0-beta` |
 | [Localytics](https://github.com/segment-integrations/analytics-android-integration-localytics) | `com.segment.analytics.android.integrations:Localytics` |
 | [Mixpanel](https://github.com/segment-integrations/analytics-android-integration-mixpanel) | `com.segment.analytics.android.integrations:mixpanel:1.1.0` |
 | [NielsenDCR](https://github.com/segment-integrations/analytics-android-integration-nielsendcr) | `com.segment.analytics.android.integrations:nielsendcr:1.0.0-Beta` |
@@ -247,7 +248,7 @@ Futher [explanation](https://segment.com/docs/sources/mobile/ios/#flushing) can 
 Analytics.enable()
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#opt-out) can be found on Segments own page.
-## disable: function ()  
+## disable: function ()
 *You may need to offer the ability for users to opt-out of analytics*
 ```js
 Analytics.disable()

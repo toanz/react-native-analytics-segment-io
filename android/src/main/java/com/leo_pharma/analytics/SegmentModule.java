@@ -20,6 +20,7 @@ import com.segment.analytics.android.integrations.countly.CountlyIntegration;
 import com.segment.analytics.android.integrations.crittercism.CrittercismIntegration;
 import com.segment.analytics.android.integrations.firebase.FirebaseIntegration;
 import com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration;
+import com.segment.analytics.android.integrations.intercom.IntercomIntegration;
 import com.segment.analytics.android.integrations.localytics.LocalyticsIntegration;
 import com.segment.analytics.android.integrations.mixpanel.MixpanelIntegration;
 import com.segment.analytics.android.integrations.nielsendcr.NielsenDCRIntegration;
@@ -131,6 +132,10 @@ public class SegmentModule extends ReactContextBaseJavaModule {
 
         if (isClassAvailable("com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration")) {
             analyticsBuilder.use(GoogleAnalyticsIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.intercom.IntercomIntegration")) {
+            analyticsBuilder.use(IntercomIntegration.FACTORY);
         }
 
         if (isClassAvailable("com.segment.analytics.android.integrations.localytics.LocalyticsIntegration")) {

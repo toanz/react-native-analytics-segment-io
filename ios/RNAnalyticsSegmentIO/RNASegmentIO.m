@@ -144,6 +144,10 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
 #ifdef SEGAppboyIntegrationFactoryImported
     [config use:[SEGAppboyIntegrationFactory instance]];
 #endif
+    
+#ifdef SEGIntercomIntegrationFactoryImported
+    [config use:[SEGIntercomIntegrationFactory instance]];
+#endif
 
     [SEGAnalytics setupWithConfiguration:config];
 
