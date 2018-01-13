@@ -173,3 +173,14 @@
 #import "SEGAppboyIntegrationFactory.h"
 #define SEGAppboyIntegrationFactoryImported
 #endif
+
+#if __has_include(<Segment-Intercom/SEGIntercomIntegrationFactory.h>)
+#import <Segment-Intercom/SEGIntercomIntegrationFactory.h>
+#define SEGIntercomIntegrationFactoryImported
+#elif __has_include(<Segment_Intercom/SEGIntercomIntegrationFactory.h>)
+#import <Segment_Intercom/SEGIntercomIntegrationFactory.h>
+#define SEGIntercomIntegrationFactoryImported
+#elif __has_include("SEGIntercomIntegrationFactory.h")
+#import "SEGIntercomIntegrationFactory.h"
+#define SEGIntercomIntegrationFactoryImported
+#endif

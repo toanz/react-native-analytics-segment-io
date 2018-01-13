@@ -57,7 +57,7 @@ Supported integrations:
 | [AppsFlyer](https://github.com/AppsFlyerSDK/segment-appsflyer-ios)            | `pod 'segment-appsflyer-ios'`            |
 | [Branch](https://github.com/BranchMetrics/Segment-Branch-iOS)            | `pod 'Segment-Branch'`            |
 | [Braze (formerly Appboy)](https://github.com/Appboy/appboy-segment-ios)            | `pod 'Segment-Appboy'`            |
-
+| [Intercom](https://github.com/segment-integrations/analytics-ios-integration-intercom) | `pod 'Segment-Intercom'` |
 
 ## Android
 
@@ -248,7 +248,7 @@ Futher [explanation](https://segment.com/docs/sources/mobile/ios/#flushing) can 
 Analytics.enable()
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#opt-out) can be found on Segments own page.
-## disable: function ()  
+## disable: function ()
 *You may need to offer the ability for users to opt-out of analytics*
 ```js
 Analytics.disable()
