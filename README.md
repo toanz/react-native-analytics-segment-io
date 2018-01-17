@@ -59,6 +59,42 @@ Supported integrations:
 | [Braze (formerly Appboy)](https://github.com/Appboy/appboy-segment-ios)            | `pod 'Segment-Appboy'`            |
 | [Intercom](https://github.com/segment-integrations/analytics-ios-integration-intercom) | `pod 'Segment-Intercom'` |
 
+### Ensure build order
+
+To be absolutely certain that your integrations will be correctly handled by the `react-native-analytics-segment-io` module, you have to make sure that the `Pods` target is built before the `RNAnalyticsSegmentIO` one.
+
+1. Open your project workspace `<name_of_your_app>.xcworkspace` located in the `ios/` folder.
+
+:warning: we want to open the `.xcworkspace` file and **NOT** the `.xcodeproj`.
+
+2. Open the `Edit Scheme…` pane of your own app target main scheme.
+
+![Edit scheme](./docs/edit-scheme.png)
+
+3. Select `Build` in the phase list on the left.
+
+![Build list](./docs/build-list.png)
+
+4. Make sure that the `Parallelize build` option is unchecked.
+
+![Parallelize build](./docs/parallelize-build.png)
+
+5. If the `Pods-<name_of_your_app>` target is not present in the list click the `+` button and select it in the list under the `Pods` project.
+
+![Pods target selection](./docs/pods-selection.png)
+
+6. If the `RNAnalyticsSegmentIO` target is not present in the list click the `+` button and select it in the list under the `RNAnalyticsSegmentIO` project.
+
+![Module target selection](./docs/module-selection.png)
+
+7. Re-arrange the `Targets` list by dragging targets around to make sure that:
+- Both `Pods-<name_of_your_app>` and `RNAnalyticsSegmentIO` are placed **after** the `React` target and **before** the `<name_of_your_app>` target.
+- The `RNAnalyticsSegmentIO` target is placed **after** the `Pods-<name_of_your_app>` one.
+
+![Build order](./docs/build-order.png)
+
+*Note: This setup is particularly relevant if your Podfile contains* `use_frameworks!`
+
 ## Android
 
 Run `react-native link react-native-analytics-segment-io` to add the necessary lines to the build files. Alternatively, you can do this manually with the 2 following steps:
