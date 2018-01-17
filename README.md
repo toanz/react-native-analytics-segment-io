@@ -213,7 +213,7 @@ Futher [explanation](https://segment.com/docs/sources/mobile/ios/#track) can be 
 ## screen: function (name, properties = {})
 *Record whenever a user sees a screen*
 ```js
-Analytics.track('Photo Screen', { feed: 'private' })
+Analytics.screen('Photo Screen', { feed: 'private' })
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#screen) can be found on Segments own page.
 
