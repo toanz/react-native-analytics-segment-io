@@ -3,12 +3,12 @@
 
 # A React Native wrapper for Segment Analytics
 
-- [Installation](https://github.com/leoilab/react-native-analytics-segment-io#installation)
-  * [iOS](https://github.com/leoilab/react-native-analytics-segment-io#ios)
-  * [Android](https://github.com/leoilab/react-native-analytics-segment-io#android)
-- [Usage](https://github.com/leoilab/react-native-analytics-segment-io#usage)
-- [Example](https://github.com/leoilab/react-native-analytics-segment-io#example)
-- [License](https://github.com/leoilab/react-native-analytics-segment-io#license)
+- [Installation](#installation)
+  * [iOS](#ios)
+  * [Android](#android)
+- [Usage](#usage)
+- [Example](#example)
+- [License](#license)
 
 
 # Installation
@@ -197,16 +197,16 @@ repositories {
 import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io'
 ```
 
-- **Analytics.setup(key, options)**
-- **Analytics.identify(userId, traits)**
-- **Analytics.track(event, properties)**
-- **Analytics.screen(name, properties)**
-- **Analytics.group(groupId, traits)**
-- **Analytics.alias(newId)**
-- **Analytics.reset()**
-- **Analytics.flush()**
-- **Analytics.enable()**
-- **Analytics.disable()**
+- [Analytics.setup(key, options)](#setup-function-key-options--)
+- [Analytics.identify(userId, traits)](#identify-function-userid-traits--)
+- [Analytics.track(event, properties)](#track-function-event-properties--)
+- [Analytics.screen(name, properties)](#screen-function-name-properties--)
+- [Analytics.group(groupId, traits)](#group-function-groupid-traits--)
+- [Analytics.alias(newId)](#alias-function-newid)
+- [Analytics.reset()](#reset-function-)
+- [Analytics.flush()](#flush-function-)
+- [Analytics.enable()](#enable-function-)
+- [Analytics.disable()](#disable-function-)
 
 ## setup: function (key, options = {})
 *Initial framework setup*
@@ -260,30 +260,35 @@ Analytics.group('Group123', {name: 'Bob Group', description: 'Accounting Awesome
 ```
 
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#group) can be found on Segments own page.
+
 ## alias: function (newId)
 *Associate one user identity with another*
 ```js
 Analytics.alias('new_id')
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#alias) can be found on Segments own page.
+
 ## reset: function ()
 *Clears the SDK’s internal stores for the current user and group*
 ```js
 Analytics.reset()
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#reset) can be found on Segments own page.
+
 ## flush: function ()
 *Manually flush the queue*
 ```js
 Analytics.flush()
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#flushing) can be found on Segments own page.
+
 ## enable: function ()
 *You may need to offer the ability for users to opt-out of analytics*
 ```js
 Analytics.enable()
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#opt-out) can be found on Segments own page.
+
 ## disable: function ()
 *You may need to offer the ability for users to opt-out of analytics*
 ```js
