@@ -9,10 +9,13 @@ import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io
 
 class example extends Component {
   componentDidMount() {
-    Analytics.setup('add-segment-key-here', { [AnalyticsConstants.enableAdvertisingTracking]: true, [AnalyticsConstants.debug]: true })
-      .then(() => {
-        Analytics.track('test', {})
-      })
+    Analytics.setup('add-segment-key-here', {
+      [AnalyticsConstants.trackApplicationLifecycleEvents]: true,
+      [AnalyticsConstants.debug]: true
+    })
+    .then(() => {
+      Analytics.track('test', {})
+    })
   }
 
   render() {
