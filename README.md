@@ -211,8 +211,13 @@ import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io
 ## setup: function (key, options = {})
 *Initial framework setup*
 ```js
-Analytics.setup('segment_write_key', { [AnalyticsConstants.enableAdvertisingTracking]: true })
+const options = { option: value, option: value }
+Analytics.setup('segment_write_key', options)
 ```
+
+Where `options` is an object that contains the options mentioned in the table below.
+There are constants available for all the options, using `[AnalyticsConstants.optionName]`, e.g. `[AnalyticsConstants.trackApplicationLifecycleEvents]: true`.
+If an option is not set in the `options` object, its default value is used (see table below).
 
 *`setup()` returns a promise to indicate whether the initialization was successful or not.*
 
