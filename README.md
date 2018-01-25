@@ -211,8 +211,13 @@ import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io
 ## setup: function (key, options = {})
 *Initial framework setup*
 ```js
-Analytics.setup('segment_write_key', { [AnalyticsConstants.enableAdvertisingTracking]: true })
+const options = { option: value, option: value }
+Analytics.setup('segment_write_key', options)
 ```
+
+Where `options` is an object that contains the options mentioned in the table below.
+There are constants available for all the options, using `[AnalyticsConstants.optionName]`, e.g. `[AnalyticsConstants.trackApplicationLifecycleEvents]: true`.
+If an option is not set in the `options` object, its default value is used (see table below).
 
 *`setup()` returns a promise to indicate whether the initialization was successful or not.*
 
@@ -220,15 +225,15 @@ Supported options:
 
 | Options                         | Type    | Default | iOS | Android | Description                                                                                                                                                                            |
 |---------------------------------|---------|---------|-----|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| enableAdvertisingTracking       | Bool    | `true`  | ✔   | ✘       | Whether the analytics client should track advertising info.                                                                                                                           |
-| flushAt                         | Integer | `20`    | ✔   | ✔       | The number of queued events that the analytics client should flush at. Setting this to `1` will not queue any events and will use more battery.                                        |
-| recordScreenViews               | Bool    | `false` | ✔   | ✔       | Whether the analytics client should automatically make a screen call when a view controller is added to a view hierarchy.                                                              |
-| shouldUseBluetooth              | Bool    | `false` | ✔   | ✘       | Whether the analytics client should record bluetooth information.                                                                                                                      |
-| shouldUseLocationServices       | Bool    | `false` | ✔   | ✘       | Whether the analytics client should use location services.                                                                                                                             |
-| trackApplicationLifecycleEvents | Bool    | `false` | ✔   | ✔       | Whether the analytics client should automatically make a track call for application lifecycle events, such as "Application Installed", "Application Updated" and "Application Opened". |
-| trackAttributionData            | Bool    | `false` | ✔   | ✔       | Whether the analytics client should automatically track attribution data from enabled providers using the mobile service.                                                              |
-| trackDeepLinks                  | Bool    | `false` | ✔   | ✘       | Whether the analytics client should automatically track deep links.                                                                                                                    |
-| debug                           | Bool    | `false` | ✔   | ✔       | Whether the analytics client should log everything to the console (only enable this during development).                                                                               |
+| enableAdvertisingTracking       | Bool    | `true`  | ✓   | ✗       | Whether the analytics client should track advertising info.                                                                                                                           |
+| flushAt                         | Integer | `20`    | ✓   | ✓       | The number of queued events that the analytics client should flush at. Setting this to `1` will not queue any events and will use more battery.                                        |
+| recordScreenViews               | Bool    | `false` | ✓   | ✓       | Whether the analytics client should automatically make a screen call when a view controller is added to a view hierarchy.                                                              |
+| shouldUseBluetooth              | Bool    | `false` | ✓   | ✗       | Whether the analytics client should record bluetooth information.                                                                                                                      |
+| shouldUseLocationServices       | Bool    | `false` | ✓   | ✗       | Whether the analytics client should use location services.                                                                                                                             |
+| trackApplicationLifecycleEvents | Bool    | `false` | ✓   | ✓       | Whether the analytics client should automatically make a track call for application lifecycle events, such as "Application Installed", "Application Updated" and "Application Opened". |
+| trackAttributionData            | Bool    | `false` | ✓   | ✓       | Whether the analytics client should automatically track attribution data from enabled providers using the mobile service.                                                              |
+| trackDeepLinks                  | Bool    | `false` | ✓   | ✗       | Whether the analytics client should automatically track deep links.                                                                                                                    |
+| debug                           | Bool    | `false` | ✓   | ✓       | Whether the analytics client should log everything to the console (only enable this during development).                                                                               |
 
 ## identify: function (userId, traits = {})
 *Tie a user to their actions and record traits about them*
