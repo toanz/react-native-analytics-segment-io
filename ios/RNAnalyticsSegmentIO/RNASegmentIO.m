@@ -24,8 +24,6 @@
 #import "RNASegmentIO.h"
 #import "RNAIntegrations.h"
 
-#import "SEGAnalytics.h"
-
 #import <React/RCTBridge.h>
 
 static NSString * const kSEGEnableAdvertisingTrackingKey = @"enableAdvertisingTracking";
