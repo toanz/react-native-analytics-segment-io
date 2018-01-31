@@ -237,6 +237,16 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         Analytics.with(getReactApplicationContext()).flush();
     }
 
+    @ReactMethod
+    public void enable() {
+        Analytics.with(getReactApplicationContext()).optOut(false);
+    }
+
+    @ReactMethod
+    public void disable() {
+        Analytics.with(getReactApplicationContext()).optOut(true);
+    }
+
     @Nullable
     @Override
     public Map<String, Object> getConstants() {

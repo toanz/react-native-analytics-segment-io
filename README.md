@@ -128,10 +128,6 @@ protected List<ReactPackage> getPackages() {
 
 Your project is now ready to start calling functions on react-native-analytics-segment-io.
 
-### enable() and disable()
-
-The `enable()` and `disable()` methods are not available in the Segment SDK for Android, so they are not included in the Android version of this library.
-
 ### Why you need to add the Segment SDK manually
 
 The Segment SDK is added to the library as a `provided` dependency, meaning that it is not included in the final build. That is why it is necessary to include the Segment SDK in the app's `build.gradle` file. This makes it easy to update the Segment SDK from the app, and it makes the app's build configuration the source of truth when it comes to Segment.
