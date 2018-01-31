@@ -24,6 +24,10 @@
 #import "RNASegmentIO.h"
 #import "RNAIntegrations.h"
 
+#import "SEGAnalytics.h"
+
+#import <React/RCTBridge.h>
+
 static NSString * const kSEGEnableAdvertisingTrackingKey = @"enableAdvertisingTracking";
 static NSString * const kSEGFlushAtKey = @"flushAt";
 static NSString * const kSEGRecordScreenViewsKey = @"recordScreenViews";
@@ -37,6 +41,8 @@ static NSString * const kSEGDebugKey = @"debug";
 @implementation RNASegmentIO
 
 RCT_EXPORT_MODULE()
+
+@synthesize bridge = _bridge;
 
 RCT_EXPORT_METHOD(setup:(NSString *)key
                   options:(NSDictionary *)options
@@ -154,6 +160,14 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
     value = options[kSEGDebugKey];
     if (value != nil) {
         [SEGAnalytics debug:[RCTConvert BOOL:value]];
+    }
+    //Fix due to late init of native module
+    value = options[kSEGTrackApplicationLifecycleEventsKey];
+    if (value != nil && [RCTConvert BOOL:value]) {
+        SEL selector = @selector(_applicationDidFinishLaunchingWithOptions:);
+        if ([[SEGAnalytics sharedAnalytics] respondsToSelector:selector]) {
+            [[SEGAnalytics sharedAnalytics] performSelector:selector withObject:self.bridge.launchOptions];
+        }
     }
 
     resolve(@(YES));
