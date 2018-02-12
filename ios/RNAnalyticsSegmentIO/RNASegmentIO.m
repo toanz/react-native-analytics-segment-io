@@ -216,6 +216,10 @@ RCT_EXPORT_METHOD(disable)
     [[SEGAnalytics sharedAnalytics] disable];
 }
 
++ (BOOL)requiresMainQueueSetup {
+    return YES;
+}
+
 - (NSDictionary<NSString *, id> *)constantsToExport {
     return @{
         kSEGEnableAdvertisingTrackingKey: kSEGEnableAdvertisingTrackingKey,
