@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/leoilab/react-native-analytics-segment-io.git"
   },
+  "typings": "index.d.ts",
   "keywords": [
     "react-native",
     "segment",
