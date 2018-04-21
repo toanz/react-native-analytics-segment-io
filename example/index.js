@@ -5,14 +5,17 @@ import {
   Text,
   View
 } from 'react-native';
-import Analytics from 'react-native-analytics-segment-io';
+import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io';
 
-export default class example extends Component {
+class example extends Component {
   componentDidMount() {
-    Analytics.setup('add-segment-key-here', { enableAdvertisingTracking: true })
-      .then(() => {
-        Analytics.track('test', {})
-      })
+    Analytics.setup('add-segment-key-here', {
+      [AnalyticsConstants.trackApplicationLifecycleEvents]: true,
+      [AnalyticsConstants.debug]: true
+    })
+    .then(() => {
+      Analytics.track('test', {})
+    })
   }
 
   render() {
@@ -47,3 +50,5 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 })
+
+AppRegistry.registerComponent('example', () => example)

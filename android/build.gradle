@@ -23,9 +23,9 @@ android {
 }
 
 repositories {
-  println(rootDir)
   maven { url "$rootDir/../node_modules/react-native/android" }
   mavenCentral()
+  maven { url "http://appboy.github.io/appboy-android-sdk/sdk" } // Required for Braze (formerly Appboy)
   maven { url 'https://comscore.bintray.com/Analytics' } // Required for Comscore
   maven { url 'http://dl.bintray.com/countly/maven' } // Required for Countly
   maven { url 'https://maven.google.com' } // Required for Firebase
@@ -34,8 +34,9 @@ repositories {
 
 dependencies {
   provided 'com.facebook.react:react-native:+'
-  provided 'com.segment.analytics.android:analytics:4.2.6'
+  provided 'com.segment.analytics.android:analytics:4.3.1'
 
+  provided 'com.appboy:appboy-segment-integration:2.1.1'
   provided 'com.appsflyer:segment-android-integration:1.9'
   provided 'com.segment.analytics.android.integrations:adjust:0.3.1'
   provided 'com.segment.analytics.android.integrations:amplitude:1.2.1'
@@ -45,9 +46,11 @@ dependencies {
   provided 'com.segment.analytics.android.integrations:crittercism:1.0.0'
   provided 'com.segment.analytics.android.integrations:firebase:1.1.0'
   provided 'com.segment.analytics.android.integrations:google-analytics:2.0.0'
+  provided 'com.segment.analytics.android.integrations:intercom:1.1.0-beta'
   provided 'com.segment.analytics.android.integrations:localytics:1.1.0'
   provided 'com.segment.analytics.android.integrations:mixpanel:1.1.0'
   provided 'com.segment.analytics.android.integrations:nielsendcr:1.0.0-Beta'
   provided 'com.segment.analytics.android.integrations:quantcast:1.0.1'
   provided 'com.segment.analytics.android.integrations:tapstream:1.0.0'
+  provided 'io.branch.segment.analytics.android.integrations:branch:1.0.2-RELEASE'
 }

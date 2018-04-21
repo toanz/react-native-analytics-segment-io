@@ -12,6 +12,7 @@ import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
 import com.segment.analytics.android.integrations.adjust.AdjustIntegration;
 import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
+import com.segment.analytics.android.integrations.appboy.AppboyIntegration;
 import com.segment.analytics.android.integrations.appsflyer.AppsflyerIntegration;
 import com.segment.analytics.android.integrations.bugsnag.BugsnagIntegration;
 import com.segment.analytics.android.integrations.comscore.ComScoreIntegration;
@@ -19,17 +20,23 @@ import com.segment.analytics.android.integrations.countly.CountlyIntegration;
 import com.segment.analytics.android.integrations.crittercism.CrittercismIntegration;
 import com.segment.analytics.android.integrations.firebase.FirebaseIntegration;
 import com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration;
+import com.segment.analytics.android.integrations.intercom.IntercomIntegration;
 import com.segment.analytics.android.integrations.localytics.LocalyticsIntegration;
 import com.segment.analytics.android.integrations.mixpanel.MixpanelIntegration;
 import com.segment.analytics.android.integrations.nielsendcr.NielsenDCRIntegration;
 import com.segment.analytics.android.integrations.quantcast.QuantcastIntegration;
 import com.segment.analytics.android.integrations.tapstream.TapstreamIntegration;
+import com.segment.analytics.android.integrations.branch.BranchIntegration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SegmentModule extends ReactContextBaseJavaModule {
     private static final String PROPERTY_FLUSH_AT = "flushAt";
     private static final String PROPERTY_RECORD_SCREEN_VIEWS = "recordScreenViews";
     private static final String PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS = "trackApplicationLifecycleEvents";
     private static final String PROPERTY_TRACK_ATTRIBUTION_DATA = "trackAttributionData";
+    private static final String PROPERTY_DEBUG = "debug";
 
     public SegmentModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -53,12 +60,21 @@ public class SegmentModule extends ReactContextBaseJavaModule {
                 analyticsBuilder.recordScreenViews();
             }
 
-            if (options.hasKey(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS) && options.getBoolean(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)) {
+            if (options.hasKey(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)
+                    && options.getBoolean(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS)) {
                 analyticsBuilder.trackApplicationLifecycleEvents();
             }
 
-            if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA) && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
+            if (options.hasKey(PROPERTY_TRACK_ATTRIBUTION_DATA)
+                    && options.getBoolean(PROPERTY_TRACK_ATTRIBUTION_DATA)) {
                 analyticsBuilder.trackAttributionInformation();
+            }
+
+            if (options.hasKey(PROPERTY_DEBUG) && options.getBoolean(PROPERTY_DEBUG)) {
+                analyticsBuilder.logLevel(Analytics.LogLevel.VERBOSE);
+            }
+            else {
+                analyticsBuilder.logLevel(Analytics.LogLevel.NONE);
             }
         }
 
@@ -67,8 +83,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         try {
             Analytics.setSingletonInstance(analyticsBuilder.build());
             promise.resolve(true);
-        }
-        catch (IllegalStateException e) {
+        } catch (IllegalStateException e) {
             promise.reject("IllegalStateException", "Analytics is already set up, cannot perform setup twice.");
         }
     }
@@ -85,6 +100,10 @@ public class SegmentModule extends ReactContextBaseJavaModule {
 
         if (isClassAvailable("com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration")) {
             analyticsBuilder.use(AmplitudeIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.appboy.AppboyIntegration")) {
+            analyticsBuilder.use(AppboyIntegration.FACTORY);
         }
 
         if (isClassAvailable("com.segment.analytics.android.integrations.appsflyer.AppsflyerIntegration")) {
@@ -115,6 +134,10 @@ public class SegmentModule extends ReactContextBaseJavaModule {
             analyticsBuilder.use(GoogleAnalyticsIntegration.FACTORY);
         }
 
+        if (isClassAvailable("com.segment.analytics.android.integrations.intercom.IntercomIntegration")) {
+            analyticsBuilder.use(IntercomIntegration.FACTORY);
+        }
+
         if (isClassAvailable("com.segment.analytics.android.integrations.localytics.LocalyticsIntegration")) {
             analyticsBuilder.use(LocalyticsIntegration.FACTORY);
         }
@@ -134,6 +157,10 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         if (isClassAvailable("com.segment.analytics.android.integrations.tapstream.TapstreamIntegration")) {
             analyticsBuilder.use(TapstreamIntegration.FACTORY);
         }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.branch.BranchIntegration")) {
+            analyticsBuilder.use(BranchIntegration.FACTORY);
+        }
     }
 
     /**
@@ -146,8 +173,7 @@ public class SegmentModule extends ReactContextBaseJavaModule {
         try {
             Class.forName(className);
             return true;
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             return false;
         }
     }
@@ -209,5 +235,27 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void flush() {
         Analytics.with(getReactApplicationContext()).flush();
+    }
+
+    @ReactMethod
+    public void enable() {
+        Analytics.with(getReactApplicationContext()).optOut(false);
+    }
+
+    @ReactMethod
+    public void disable() {
+        Analytics.with(getReactApplicationContext()).optOut(true);
+    }
+
+    @Nullable
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> constants = new HashMap<>();
+        constants.put(PROPERTY_FLUSH_AT, PROPERTY_FLUSH_AT);
+        constants.put(PROPERTY_RECORD_SCREEN_VIEWS, PROPERTY_RECORD_SCREEN_VIEWS);
+        constants.put(PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS, PROPERTY_TRACK_APPLICATION_LIFECYCLE_EVENTS);
+        constants.put(PROPERTY_TRACK_ATTRIBUTION_DATA, PROPERTY_TRACK_ATTRIBUTION_DATA);
+        constants.put(PROPERTY_DEBUG, PROPERTY_DEBUG);
+        return constants;
     }
 }
