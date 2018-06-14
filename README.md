@@ -162,6 +162,7 @@ Supported integrations:
 | [Countly](https://github.com/segment-integrations/analytics-android-integration-countly) | `com.segment.analytics.android.integrations:countly:1.0.0` |
 | [Crittercism](https://github.com/segment-integrations/analytics-android-integration-crittercism) | `com.segment.analytics.android.integrations:crittercism:1.0.0` |
 | [Firebase](https://github.com/segment-integrations/analytics-android-integration-firebase) | `com.segment.analytics.android.integrations:firebase:1.1.0` |
+| [Flurry](https://github.com/segment-integrations/analytics-android-integration-flurry) | `com.segment.analytics.android.integrations:flurry:3.0.0` |
 | [Google Analytics](https://github.com/segment-integrations/analytics-android-integration-google-analytics) | `com.segment.analytics.android.integrations:google-analytics:2.0.0` |
 | [Intercom](https://github.com/segment-integrations/analytics-android-integration-intercom) | `com.segment.analytics.android.integrations:intercom:1.1.0-beta` |
 | [Localytics](https://github.com/segment-integrations/analytics-android-integration-localytics) | `com.segment.analytics.android.integrations:Localytics` |
