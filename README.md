@@ -117,6 +117,8 @@ compile 'com.segment.analytics.android:analytics:x.x.x' // We have tested with v
 
 Then sync Gradle, and add the analytics package to your `Application` class:
 ```java
+import com.leo_pharma.analytics.AnalyticsPackage;
+...
 @Override
 protected List<ReactPackage> getPackages() {
   return Arrays.<ReactPackage>asList(
