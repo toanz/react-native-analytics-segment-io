@@ -19,6 +19,7 @@ import com.segment.analytics.android.integrations.comscore.ComScoreIntegration;
 import com.segment.analytics.android.integrations.countly.CountlyIntegration;
 import com.segment.analytics.android.integrations.crittercism.CrittercismIntegration;
 import com.segment.analytics.android.integrations.firebase.FirebaseIntegration;
+import com.segment.analytics.android.integrations.flurry.FlurryIntegration;
 import com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration;
 import com.segment.analytics.android.integrations.intercom.IntercomIntegration;
 import com.segment.analytics.android.integrations.localytics.LocalyticsIntegration;
@@ -128,6 +129,10 @@ public class SegmentModule extends ReactContextBaseJavaModule {
 
         if (isClassAvailable("com.segment.analytics.android.integrations.firebase.FirebaseIntegration")) {
             analyticsBuilder.use(FirebaseIntegration.FACTORY);
+        }
+
+        if (isClassAvailable("com.segment.analytics.android.integrations.flurry.FlurryIntegration")) {
+            analyticsBuilder.use(FlurryIntegration.FACTORY);
         }
 
         if (isClassAvailable("com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration")) {
